@@ -1,0 +1,5 @@
+# system-wide crontab
+SHELL=/bin/bash
+
+# m  h  dom mon dow user      command
+  0  0   *   *   *  nobody    cd tmm && ./tinyMediaManagerCMD.sh -update -scrapeNew -renameNew 2>&1 | logger -p cron.info -i

@@ -54,7 +54,7 @@ ADD ./files/start.sh /start.sh
 RUN chown root:root /etc/supervisor/conf.d/* /etc/crontab /etc/rsyslog.d/60-cron.conf
 
 # Expose default noVNC port
-EXPOSE 8060
+EXPOSE 6080
 # Make start script executable and default command
 RUN chmod +x /start.sh
 ENTRYPOINT ["/start.sh"]

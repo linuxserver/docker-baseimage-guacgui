@@ -24,7 +24,7 @@ RUN apt-get -q update
 RUN apt-get dist-upgrade -qy && apt-get -q update
 
 # Install vnc, xvfb in order to creat a 'fake' display novnc
-RUN apt-get install -qy --force-yes x11vnc xvfb openjdk-7-jre cron postfix supervisor rsyslog wget
+RUN apt-get install -qy --force-yes x11vnc xvfb openjdk-7-jre cron postfix supervisor rsyslog wget openbox
 RUN wget http://github.com/kanaka/noVNC/tarball/master -O noVNC.tar && mkdir /noVNC && tar -xf noVNC.tar --strip-components 1 -C /noVNC
 
 # Setup vnc

@@ -1,8 +1,8 @@
-#docker TinnyMediaManager
+#docker TinyMediaManager
 
 ## Description:
 
-This is a Dockerfile for "TinnyMediaManager" - (http://www.tinymediamanager.org/)
+This is a Dockerfile for "TinyMediaManager" - (http://www.tinymediamanager.org/).
 A VNC server running TinyMediaManager that can be access through a modern browser such as chrome. 
 Image also runs TinyMediaManager to update and scrape any new movies at midnight.
 

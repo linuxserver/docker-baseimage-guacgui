@@ -1,5 +1,5 @@
 #TinyMediaManager 
-FROM ubuntu:trusty
+FROM ubuntu:utopic
 MAINTAINER Carlos Hernandez <carlos@techbyte.ca>
 
 # Let the container know that there is no tty

@@ -27,7 +27,7 @@ Install directory of TinyMediaManager.
 ## Instructions:
 
 * Download latest TinyMediaManager from [here](http://code.fosshub.com/tinyMediaManager/downloads).
-* Extract to a location such as /tmm on the host.
+* Extract to a location such as /tmm on the host and ensure the directory and all files are by uid 99 and gid 100 (nobdy and users on unRAID).
 * Run the docker command.
 * Access TinyMediaManager from a browser such as chrome by vising. http://host:6080/vnc.html
 * If mouse is an issue than disable local mouse config on webpage before connecting. There is no password.

@@ -5,4 +5,4 @@ touch /tmm/rlogs/cron.log
 chmod 666 /tmm/rlogs/cron.log
 chmod +x /tmm/tinyMediaManager.sh /tmm/tinyMediaManagerCMD.sh
 
-supervisord -n
+/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf

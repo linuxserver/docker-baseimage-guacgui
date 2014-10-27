@@ -32,9 +32,19 @@ Install directory of TinyMediaManager.
 * Access TinyMediaManager from a browser such as chrome by vising. http://host:6080/vnc.html
 * If mouse is an issue than disable local mouse config on webpage before connecting. There is no password.
 
+
 ## Docker run command:
 
 ```
 docker run -d -p 6080:6080 -v /*tmm_install_dir_on_host:/tmm -v /*your_media_location*:/media -v /etc/localtime:/etc/localtime:ro --name=tmm hurricane/tmm
 
+```
+## Info
+
+* crontab file can be placed in tmm folder and startup script will handle it appropriately.
+* example cron script is copied to tmm folder name tinyMediaManagerScrape.sh please follow the example.
+* a valid cron entry looks as follows
+
+```
+*/5  *   *   *   *  root    cd /tmm && ./tinyMediaManagerCMD.sh 2>&1 | logger -p cron.info -i
 ```

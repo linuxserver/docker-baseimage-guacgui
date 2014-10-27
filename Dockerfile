@@ -37,7 +37,7 @@ RUN x11vnc -storepasswd 1234 /nobody/.vnc/passwd
 RUN apt-get -y autoremove 
 
 # Add config files
-ADD ./files/supervisord.conf /etc/supervisord/supervisord.conf
+ADD ./files/supervisord.conf /etc/supervisor/conf.d/common.conf
 ADD ./files/cron-supervisor.conf /etc/supervisor/conf.d/cron.conf
 ADD ./files/rsyslog-supervisor.conf /etc/supervisor/conf.d/rsyslog.conf
 ADD ./files/xvfb-supervisor.conf /etc/supervisor/conf.d/xvfb.conf
@@ -48,8 +48,10 @@ ADD ./files/tmm-supervisor.conf /etc/supervisor/conf.d/tmm.conf
 ADD ./files/crontab /etc/crontab
 ADD ./files/cron-rsyslog.conf /etc/rsyslog.d/60-cron.conf
 ADD ./files/start.sh /start.sh
-#ADD ./files/noVNC.tar /
-RUN chown root:root /etc/supervisor/conf.d/* /etc/crontab /etc/rsyslog.d/60-cron.conf /etc/supervisord/supervisord.conf
+ADD ./files/tinyMediaManagerScrape.sh /tinnyMediaManagerScrape.sh
+RUN sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so' /etc/pam.d/cron
+RUN sed -i -e 's/^\$ModLoad imklog/#\$ModLoad imklog/g' /etc/rsyslog.conf
+RUN chown root:root /etc/supervisor/conf.d/* /etc/crontab /etc/rsyslog.d/60-cron.conf
 # change ownership for unRAID
 RUN chown -R nobody:users /nobody /noVNC
 # Expose default noVNC port

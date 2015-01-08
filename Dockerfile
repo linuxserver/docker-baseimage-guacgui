@@ -58,15 +58,16 @@ ADD ./files/circus.d/Xvfb.ini /etc/circus.d/Xvfb.ini
 ADD ./files/circus.d/openbox.ini /etc/circus.d/openbox.ini
 ADD ./files/circus.d/x11vnc.ini /etc/circus.d/x11vnc.ini
 ADD ./files/circus.d/noVNC.ini /etc/circus.d/noVNC.ini
+ADD ./files/circus.d/tinyMediaManager.ini /etc/circus.d/tinyMediaManager.ini
 ADD ./files/start.sh /start.sh
-ADD ./files/openbox/autostart /etc/xdg/openbox/autostart
+ADD ./files/scripts /scripts
 ADD ./files/noVNC /noVNC
 ADD ./files/tinyMediaManager /tinyMediaManager
 ADD ./files/tmmConfig /tmmConfig
 ADD ./files/setup.d/tinyMediaManager /etc/setup.d/tinyMediaManager
 
 # change ownership for unRAID
-RUN chown -R nobody:users /nobody /noVNC /tinyMediaManager
+RUN chown -R nobody:users /nobody /noVNC /tinyMediaManager /scripts
 # Expose default noVNC port
 EXPOSE 6080
 # Make start script executable and default command

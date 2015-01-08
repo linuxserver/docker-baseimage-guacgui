@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "---> Setting up tinyMediaManager in volume..."
+[[ ! -d /config ]] && mkdir /config
+[[ ! -d /config/log ]] && mkdir /config/log
+[[ ! -d /config/logs ]] && mkdir /config/logs
+[[ ! -d /config/backup ]] && mkdir /config/backup
+[[ ! -e /config/launcher.log ]] && touch /config/launcher.log
+[[ ! -e /config/config.xml ]] && cp /tmmConfig/config.xml /config/config.xml
+[[ ! -e /config/tmm.odb ]] && cp /tmmConfig/tmm.odb /config/tmm.odb
+
+chown -R nobody:users /config
+
+echo "---> Linking config files..."
+ln -s /config/log /tinyMediaManager/log
+ln -s /config/logs /tinyMediaManager/logs
+ln -s /config/backup /tinyMediaManager/backup
+ln -s /config/launcher.log /tinyMediaManager/launcher.log
+ln -s /config/config.xml /tinyMediaManager/config.xml
+ln -s /config/tmm.odb /tinyMediaManager/tmm.odb

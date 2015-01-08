@@ -19,41 +19,54 @@ RUN usermod -m -d /nobody nobody
 RUN usermod -s /bin/bash nobody
 
 # Update ubuntu
-RUN apt-mark hold initscripts udev plymouth mountall
-RUN apt-get -q update
-RUN apt-get dist-upgrade -qy && apt-get -q update
+RUN apt-mark hold initscripts udev plymouth mountall;\
+    echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90forceyes;\
+    echo 'deb http://archive.ubuntu.com/ubuntu utopic main universe restricted' > /etc/apt/sources.list;\
+    echo 'deb http://archive.ubuntu.com/ubuntu utopic-updates  main universe restricted' >> /etc/apt/sources.list;\
+    apt-get update;\
+    echo exit 101 > /usr/sbin/policy-rc.d && chmod +x /usr/sbin/policy-rc.d;\
+    dpkg-divert --local --rename --add /sbin/initctl;\
+    ln -sf /bin/true /sbin/initctl;\
+    apt-get -y upgrade && apt-get clean
 
 # Install vnc, xvfb in order to creat a 'fake' display novnc
-RUN apt-get install -qy --force-yes x11vnc xvfb openjdk-7-jre cron postfix supervisor rsyslog wget openbox
-RUN wget http://github.com/kanaka/noVNC/tarball/master -O noVNC.tar && mkdir /noVNC && tar -xf noVNC.tar --strip-components 1 -C /noVNC
+RUN apt-get install -qy --force-yes x11vnc xvfb openjdk-7-jre wget openbox python-pip unzip python-tornado python-zmq python-psutil
+
+# Install and Configure Circus
+RUN pip --no-input install --upgrade pip
+RUN pip --no-input install circus;\
+    pip --no-input install circus-env-modifier 
+RUN mkdir /etc/circus.d /etc/setup.d
 
 # Setup vnc
 RUN mkdir /nobody && cp -R ~/.[a-zA-Z0-9]* /nobody
 RUN mkdir /nobody/.vnc
+RUN rm -r /nobody/.cache; mkdir /nobody/.cache
 # Setup a password
 RUN x11vnc -storepasswd 1234 /nobody/.vnc/passwd
 
 # Cleanup
 RUN apt-get -y autoremove 
 
+# Exposed config volume
+VOLUME /config
+
 # Add config files
-ADD ./files/supervisord.conf /etc/supervisor/conf.d/common.conf
-ADD ./files/cron-supervisor.conf /etc/supervisor/conf.d/cron.conf
-ADD ./files/rsyslog-supervisor.conf /etc/supervisor/conf.d/rsyslog.conf
-ADD ./files/xvfb-supervisor.conf /etc/supervisor/conf.d/xvfb.conf
-ADD ./files/openbox-supervisor.conf /etc/supervisor/conf.d/openbox.conf
-ADD ./files/x11vnc-supervisor.conf /etc/supervisor/conf.d/x11vnc.conf
-ADD ./files/noVNC-supervisor.conf /etc/supervisor/conf.d/noVNC.conf
-ADD ./files/tmm-supervisor.conf /etc/supervisor/conf.d/tmm.conf
-ADD ./files/crontab /etc/crontab
-ADD ./files/cron-rsyslog.conf /etc/rsyslog.d/60-cron.conf
+ADD ./files/circus.ini /etc/circus.ini
 ADD ./files/start.sh /start.sh
-ADD ./files/tinyMediaManagerScrape.sh /tinnyMediaManagerScrape.sh
-RUN sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so' /etc/pam.d/cron
-RUN sed -i -e 's/^\$ModLoad imklog/#\$ModLoad imklog/g' /etc/rsyslog.conf
-RUN chown root:root /etc/supervisor/conf.d/* /etc/crontab /etc/rsyslog.d/60-cron.conf
+ADD ./files/circus.d/Xvfb.ini /etc/circus.d/Xvfb.ini
+ADD ./files/circus.d/openbox.ini /etc/circus.d/openbox.ini
+ADD ./files/circus.d/x11vnc.ini /etc/circus.d/x11vnc.ini
+ADD ./files/circus.d/noVNC.ini /etc/circus.d/noVNC.ini
+ADD ./files/start.sh /start.sh
+ADD ./files/openbox/autostart /etc/xdg/openbox/autostart
+ADD ./files/noVNC /noVNC
+ADD ./files/tinyMediaManager /tinyMediaManager
+ADD ./files/tmmConfig /tmmConfig
+ADD ./files/setup.d/tinyMediaManager /etc/setup.d/tinyMediaManager
+
 # change ownership for unRAID
-RUN chown -R nobody:users /nobody /noVNC
+RUN chown -R nobody:users /nobody /noVNC /tinyMediaManager
 # Expose default noVNC port
 EXPOSE 6080
 # Make start script executable and default command

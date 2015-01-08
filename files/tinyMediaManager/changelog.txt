@@ -1,0 +1,107 @@
+Version 2.6.4 
+=======================
++ changed Fanart.tv to v3 API (with clientKey)
++ added more artwork scraping dialogs
++ new Excel export template (xml)
++ added $L language renaming option
++ added/improved 3D handling
++ certification bulk edit
++ add season to image chooser title
++ remember last opened directory in the directory/file chooser
+x fixed BD NFO
+x fixed Excel export template
+x fixed/improved some tooltips
+x improved artwork sorting, better language detection
+x fixed MacOS startup; Java detection, executable, ...
+x fixed SSxEE TvShow parser
+x fixed movie exporter filename generation
+x ingore folders/files starting with .@
+x many code cleanups 
+
+Version 2.6.3
+=======================
++ added edit button for tv show season
+x fix physically deletion of movies in multiMovieDir
+x updated Trakt.tv libs
+x fix release build version info
+x fix TMM updater in case of error download
+x write additional NFO for DVD/BD folder
+x tweak getting modified date from files (speedup)
+x ignore backup folder when searching for missing movies 
+x added more transifex languages
+x improved some needed debug loggings
+x and some more minor internal things... 
+
+Version 2.6.2
+=======================
++ added column for watched state to the movie table
++ added action to scrape episode metadata without thumbs
++ added quick creation of movie sets to the movie bulk editor
+x greatly improved our episode detection engine
+x performance improvements with loading and update datasources
+x fixed season poster detection
+x fixed occasional crashes with trakt.tv
+x fixed wrong filenames in the renamer preview
+x fixed losing donator registration information
+x fixed crashes in ofdb.de, moviemeter.nl and zelluloid.de scraper
+x fixed trailer detection (movies with trailer in their name weren't added) 
+x fixed startup crashes with orphaned movie sets 
+
+Version 2.6.1
+=======================
+x fixed scraping of episode metadata
+x fixed TV show renamer
+x fixed year setting for TV show renamer 
+x fixed image chooser for thumbs (they are no longer be shown as fanarts) 
+x fixed slow performance of image cache with offline data sources
+x fixed crashes with trakt.tv sync
+x fixed opening of movie/TV show folder and playing of videos for linux/kde
+x improved handling of 0byte downloads (artwork) and choosing local artwork files
+
+=======================
+ Version 2.6
+=======================
+
+/!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\
+!                       D O N A T O R      V E R S I O N                       !
+!                                                                              !
+!    Our donators are now able to register their tinyMediaManager copies to    !
+!         unlock special features as a "Thank you" for their support.          !
+!                           http://goo.gl/L8G5BB                               !
+\!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/
+
+! trailer downloading (donator feature) (http://goo.gl/hozk18)
+! Trakt.tv integration (donator feature) (http://goo.gl/WNEzsG)
+! Movie renamer preview (donator feature) (http://goo.gl/PS50MF)
+! automatically add existing movies to movie sets (donator feature)
++ bigger UI rework (http://goo.gl/3wy3gL)
++ configurable font and font size
++ preserve unsupported XML tags (from other tools) in NFO files
++ extra artwork (banner, CD art, clearart, ..) is now available for movies and movie sets
++ new threading model: you can now queue different tasks; display open tasks (http://goo.gl/yFGtPq)
++ preview of images in the image chooser (http://goo.gl/kIFaKJ)
++ smart scrape: if there is no result from automatic scrape a manual scrape will pop up
++ NFO enhancement: multiple IDs (from several meta data providers) will be stored
++ option to set the preferred media player 
++ able to play trailers
++ trailer preferences (which one to automatic choose for NFO)
++ delete works now with deleting physical files (moving to backup folder)
++ ignore some Mac specific files on searching hdd/network shares
++ language updates
++ hotkeys for menu and other functions
++ improved season and episodes parser
++ several enhancements to the TV show renamer
++ show artwork from the media file panel in lightbox
++ export for TV shows basically done
++ more filter options for TV shows 
++ media source management (http://goo.gl/cE62xb)
+x fix occasional database inconsistencies
+x fix TvShow rename in command line
+x fix an occasional crash when choosing artwork
+x empty url cache from broken/unreadable HTTP responses
+x better integration of the year to the result score calculation
+x filter duplicate results from ofdb 
+x prevent audio streams from being added multiple times
+x detect stacking markers with leading zeros
+x import of watched state from XBMC NFO 
+x thousands of various fixes and stabilization from past half year :)

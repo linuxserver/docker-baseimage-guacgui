@@ -1,10 +1,12 @@
 #docker TinyMediaManager
 
 ## Description:
-
-This is a Dockerfile for "TinyMediaManager" - (http://www.tinymediamanager.org/).
-A VNC server running TinyMediaManager that can be access through a modern browser such as chrome. 
-Image also runs TinyMediaManager to update and scrape any new movies at midnight.
+tinyMediaManager (http://www.tinymediamanager.org) is a media management tool written in Java/Swing.  
+It is written to provide metadata for the XBOX Media Center (XBMC).  
+Due to the fact that it is written in Java, tinyMediaManager will run on Windows, Linux and Mac OSX (and possible more OS).  
+  
+ 
+This Docker image makes it possible to use  "tinyMediaManager" - (http://www.tinymediamanager.org/), through a modern web browser such as chrome.
 
 ## Build from docker file:
 
@@ -20,17 +22,9 @@ docker build --rm=true -t tmm .
 
 Location of media, that you want managed by media manager.
 
-#### `/tmm`
+#### `/config`
 
-Install directory of TinyMediaManager.
-
-## Instructions:
-
-* Download latest TinyMediaManager from [here](http://code.fosshub.com/tinyMediaManager/downloads).
-* Extract to a location such as /tmm on the host and ensure the directory and all files are by uid 99 and gid 100 (nobdy and users on unRAID).
-* Run the docker command.
-* Access TinyMediaManager from a browser such as chrome by vising. http://host:6080/vnc.html
-* If mouse is an issue than disable local mouse config on webpage before connecting. There is no password.
+Config directory of tinyMediaManager.
 
 
 ## Docker run command:
@@ -38,13 +32,4 @@ Install directory of TinyMediaManager.
 ```
 docker run -d -p 6080:6080 -v /*tmm_install_dir_on_host:/tmm -v /*your_media_location*:/media -v /etc/localtime:/etc/localtime:ro --name=tmm hurricane/tmm
 
-```
-## Info
-
-* crontab file can be placed in tmm folder and startup script will handle it appropriately.
-* example cron script is copied to tmm folder name tinyMediaManagerScrape.sh please follow the example.
-* a valid cron entry looks as follows
-
-```
-*/5  *   *   *   *  root    cd /tmm && ./tinyMediaManagerCMD.sh 2>&1 | logger -p cron.info -i
 ```

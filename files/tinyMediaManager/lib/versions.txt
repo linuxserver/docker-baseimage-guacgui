@@ -1,0 +1,46 @@
+api-common-1.1.jar
+asm-3.3.1.jar
+betterbeansbinding-core-1.3.0.jar
+betterbeansbinding-el-1.3.0.jar
+betterbeansbinding-swingbinding-1.3.0.jar
+commons-codec-1.6.jar
+commons-io-2.1.jar
+commons-lang3-3.1.jar
+core-1.0.0.jar
+DJNativeSwing-SWT.jar
+DJNativeSwing.jar
+fanarttvapi-3.0.jar
+forms-1.8.2.jar
+glazedlists-java_150-1.9.0.jar
+gson-2.2.4.jar
+httpclient-4.3.2.jar
+httpcore-4.3.1.jar
+httpmime-4.3.2.jar
+imgscalr-lib-4.2.jar
+jackson-annotations-2.1.2.jar
+jackson-core-2.1.2.jar
+jackson-databind-2.1.2.jar
+jcl-over-slf4j-1.7.5.jar
+jdom.jar
+jgoodies-common-1.8.0.jar
+jmte-unbundled-3.1.jar
+jna-4.1.0.jar
+jsoup-1.7.1.jar
+JSplitButton_1.2.jar
+JTattoo-1.6.10.jar - min 
+LigthBox.jar
+log4j-over-slf4j.jar
+logback-classic-1.0.11.jar
+logback-core-1.0.11.jar
+miglayout-3.7.2-swing.jar
+objectdb-2.5.6_02.jar
+platform-4.1.0.jar (jna-platform)
+retrofit-1.6.0.jar
+Scaling-bin.jar
+slf4j-api-1.7.5.jar
+task-dialog-1.3.5.jar
+themoviedbapi-3.9.jar
+thetvdbapi-1.5.jar
+trakt-java-3.3.1.jar (https://github.com/UweTrottmann/trakt-java)
+twinkle-1.0.0.jar
+xmlrpc-client-1.1.1.jar (RedStone)

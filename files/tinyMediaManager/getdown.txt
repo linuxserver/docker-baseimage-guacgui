@@ -1,0 +1,172 @@
+# The URL from which the client is downloaded
+appbase = http://tinymediamanager.googlecode.com/svn/dist
+
+# UI Configuration
+ui.name = tinyMediaManager
+ui.background_image = splashscreen.png
+ui.icon = tmm.png
+ui.progress = 22, 272, 440, 21
+ui.progress_text = 000000
+ui.status = 30, 300, 450, 18
+ui.status_text = 000000
+ui.mac_dock_icon = ../tmm.icns
+
+# Application jar files, on classpath (generated from claspath in build.xml)
+code = tmm.jar
+code = lib/DJNativeSwing-SWT.jar
+code = lib/DJNativeSwing.jar
+code = lib/JSplitButton.jar
+code = lib/JTattoo.jar
+code = lib/LightBox.jar
+code = lib/Scaling-bin.jar
+code = lib/api-common.jar
+code = lib/asm.jar
+code = lib/betterbeansbinding-core.jar
+code = lib/betterbeansbinding-el.jar
+code = lib/betterbeansbinding-swingbinding.jar
+code = lib/commons-codec.jar
+code = lib/commons-io.jar
+code = lib/commons-lang3.jar
+code = lib/core.jar
+code = lib/fanarttvapi.jar
+code = lib/forms.jar
+code = lib/glazedlists.jar
+code = lib/gson.jar
+code = lib/httpclient.jar
+code = lib/httpcore.jar
+code = lib/httpmime.jar
+code = lib/image-viewer.jar
+code = lib/imgscalr-lib.jar
+code = lib/jackson-annotations.jar
+code = lib/jackson-core.jar
+code = lib/jackson-databind.jar
+code = lib/jcl-over-slf4j.jar
+code = lib/jdom.jar
+code = lib/jgoodies-common.jar
+code = lib/jmte-unbundled.jar
+code = lib/jna.jar
+code = lib/jsoup.jar
+code = lib/log4j-over-slf4j.jar
+code = lib/logback-classic.jar
+code = lib/logback-core.jar
+code = lib/objectdb.jar
+code = lib/platform.jar
+code = lib/quaqua-filechooser-only.jar
+code = lib/resources.jar
+code = lib/retrofit.jar
+code = lib/slf4j-api.jar
+code = lib/themoviedbapi.jar
+code = lib/thetvdbapi.jar
+code = lib/trakt-java.jar
+code = lib/twinkle.jar
+code = lib/xmlrpc-client.jar
+
+
+# strings added to classpath
+plugin = lib/swt.jar
+plugin = locale/*
+
+# files to be deleted
+delete = lib/vlcj.jar
+delete = lib/commons-logging.jar
+delete = lib/log4j.jar
+delete = lib/l2fprod-common-buttonbar.jar         
+delete = lib/l2fprod-common-shared.jar
+
+resource = [windows] tinyMediaManager.new                   #rename to new, for self-update
+resource = [windows] tinyMediaManagerUpd.new                #rename to new, for self-update
+resource = [windows] tinyMediaManagerCMD.new                #rename to new, for self-update
+resource = [!windows] tinyMediaManagerCMD.sh
+resource = [!windows] tinyMediaManager.sh
+resource = [!windows] tinyMediaManagerUpdater.sh
+resource = [mac os x] tinyMediaManagerOSX.sh
+resource = [mac os x] JavaApplicationStub.new               #rename to new, for self-update
+resource = getdown-new.jar
+resource = version
+resource = splashscreen.png
+resource = objectdb.conf
+resource = changelog.txt
+resource = [!windows] env.txt                               #still distribute an empty env.txt for a while to clean all old installations
+
+# translations
+resource = locale/messages_cs.properties
+resource = locale/messages_da.properties
+resource = locale/messages_de.properties
+resource = locale/messages_es.properties
+resource = locale/messages_fr.properties
+resource = locale/messages_hu.properties
+resource = locale/messages_it.properties
+resource = locale/messages_ko.properties
+resource = locale/messages_nl.properties
+resource = locale/messages_no.properties
+resource = locale/messages_pl.properties
+resource = locale/messages_pt.properties
+resource = locale/messages_ro.properties
+resource = locale/messages_ru.properties
+resource = locale/messages_sk.properties
+resource = locale/messages_sv.properties
+resource = locale/messages_tr.properties
+resource = locale/messages_vi.properties
+resource = locale/messages_zh.properties
+
+
+# mediainfo native libs
+resource = [linux-amd64] native/linux-amd64/libmediainfo.so
+resource = [linux-amd64] native/linux-amd64/libzen.so
+resource = [linux-arm] native/linux-arm/libmediainfo.so
+resource = [linux-arm] native/linux-arm/libzen.so
+resource = [linux-i386] native/linux-i386/libmediainfo.so
+resource = [linux-i386] native/linux-i386/libzen.so
+resource = [linux-i686] native/linux-i686/libmediainfo.so
+resource = [linux-i686] native/linux-i686/libzen.so
+resource = [mac os x-x86_64] native/mac-x86_64/libmediainfo.dylib
+resource = [mac os x-i386] native/mac-i386/libmediainfo.dylib
+resource = [windows-amd64] native/windows-amd64/MediaInfo.dll
+resource = [windows-x64] native/windows-x64/MediaInfo.dll
+resource = [windows-x86] native/windows-x86/MediaInfo.dll
+resource = [windows-x86] native/windows-x86/mingwm10.dll
+
+# Quauqa native libs 
+resource = [mac os x-x86_64] native/mac-x86_64/libquaqua.jnilib
+resource = [mac os x-x86_64] native/mac-x86_64/libquaqua64.jnilib
+resource = [mac os x-x86_64] native/mac-x86_64/libquaqua64.dylib
+resource = [mac os x-i386] native/mac-i386/libquaqua.jnilib
+
+# templates
+resource = templates/readme.txt
+uresource = templates/DetailExampleHtml.jar
+uresource = templates/DetailExample2Html.jar
+uresource = templates/ExcelXml.jar
+uresource = templates/ListExampleCsv.jar
+uresource = templates/ListExampleHtml.jar
+uresource = templates/ListExampleXml.jar
+uresource = templates/jQueryliscious.jar
+uresource = templates/SimpleConfluence.jar
+uresource = templates/TvShowDetailExampleXml.jar
+
+# The main entry point for the application (prefix needed for GD params)
+class = org.tinymediamanager.TinyMediaManager
+tmm.class = org.tinymediamanager.TinyMediaManager
+
+# allow offline use
+allow_offline = true
+
+# do not create .v files
+skip_md5_cache = true
+
+# jvm args
+#####################################################################################
+# NOTE: please consider to write fundamental changes to the commandline start scripts
+# and all other launchers too
+##################################################################################### 
+jvmarg = -Xms64m 
+jvmarg = -Xmx512m
+jvmarg = -Xss512k
+jvmarg = -splash:splashscreen.png
+jvmarg = -Djava.net.preferIPv4Stack=true
+jvmarg = -Dfile.encoding=UTF-8
+jvmarg = -XX:CompileCommand=exclude,ca/odell/glazedlists/impl/filter/TextMatchers,matches
+jvmarg = -XX:CompileCommand=exclude,ca/odell/glazedlists/impl/filter/BoyerMooreCaseInsensitiveTextSearchStrategy,indexOf
+jvmarg = [mac os x] -Dapple.awt.graphics.UseQuartz=true
+jvmarg = [mac os x] -Xdock:name=tinyMediaManager
+jvmarg = [linux] -Djna.nosys=true

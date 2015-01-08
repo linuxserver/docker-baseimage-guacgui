@@ -1,4 +1,0 @@
-# system-wide crontab
-SHELL=/bin/bash
-
-# m  h  dom mon dow user      command

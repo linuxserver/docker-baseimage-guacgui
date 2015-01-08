@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="6.0" codebase="https://tinymediamanager.googlecode.com/svn/dist/" href="launch.jnlp">
+    <information>
+        <title>tinyMediaManager</title>
+        <vendor>Manuel Laggner</vendor>
+        <description>tinyMediaManager is a media management tool written in Java/Swing. It is written to provide metadata for Kodi (XBMC).
+        </description>
+        <description kind="short">TMM - THE MediaManager of your choice :)</description>
+        <icon href="tmm.png" />
+        <icon kind="splash" href="splashscreen.png" />
+    </information>
+    <security>
+        <all-permissions />
+    </security>
+    <resources>
+        <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"
+            java-vm-args="-Xmx250M" />
+        <property name="MyApplicationProperty" value="myApplicationPropertyValue" />
+        <jar href="tmm.jar" main="true" />
+        <jar href="lib/DJNativeSwing-SWT.jar" />
+        <jar href="lib/DJNativeSwing.jar" />
+        <jar href="lib/JSplitButton.jar" />
+        <jar href="lib/JTattoo.jar" />
+        <jar href="lib/LightBox.jar" />
+        <jar href="lib/Scaling-bin.jar" />
+        <jar href="lib/api-common.jar" />
+        <jar href="lib/asm.jar" />
+        <jar href="lib/betterbeansbinding-core.jar" />
+        <jar href="lib/betterbeansbinding-el.jar" />
+        <jar href="lib/betterbeansbinding-swingbinding.jar" />
+        <jar href="lib/commons-codec.jar" />
+        <jar href="lib/commons-io.jar" />
+        <jar href="lib/commons-lang3.jar" />
+        <jar href="lib/core.jar" />
+        <jar href="lib/fanarttvapi.jar" />
+        <jar href="lib/forms.jar" />
+        <jar href="lib/glazedlists.jar" />
+        <jar href="lib/gson.jar" />
+        <jar href="lib/httpclient.jar" />
+        <jar href="lib/httpcore.jar" />
+        <jar href="lib/httpmime.jar" />
+        <jar href="lib/image-viewer.jar" />
+        <jar href="lib/imgscalr-lib.jar" />
+        <jar href="lib/jackson-annotations.jar" />
+        <jar href="lib/jackson-core.jar" />
+        <jar href="lib/jackson-databind.jar" />
+        <jar href="lib/jcl-over-slf4j.jar" />
+        <jar href="lib/jdom.jar" />
+        <jar href="lib/jgoodies-common.jar" />
+        <jar href="lib/jmte-unbundled.jar" />
+        <jar href="lib/jna.jar" />
+        <jar href="lib/jsoup.jar" />
+        <jar href="lib/log4j-over-slf4j.jar" />
+        <jar href="lib/logback-classic.jar" />
+        <jar href="lib/logback-core.jar" />
+        <jar href="lib/objectdb.jar" />
+        <jar href="lib/platform.jar" />
+        <jar href="lib/quaqua-filechooser-only.jar" />
+        <jar href="lib/resources.jar" />
+        <jar href="lib/retrofit.jar" />
+        <jar href="lib/slf4j-api.jar" />
+        <jar href="lib/themoviedbapi.jar" />
+        <jar href="lib/thetvdbapi.jar" />
+        <jar href="lib/trakt-java.jar" />
+        <jar href="lib/twinkle.jar" />
+        <jar href="lib/xmlrpc-client.jar" />
+    </resources>
+    <application-desc main-class="org.tinymediamanager.TinyMediaManager" />
+</jnlp> 

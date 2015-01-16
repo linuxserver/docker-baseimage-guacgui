@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ 
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s22">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+  </Style>
+  <Style ss:ID="s23">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <NumberFormat ss:Format="Short Date"/>
+  </Style>
+ </Styles>
+ 
+ <Worksheet ss:Name="movielist">
+  <Table x:FullColumns="1" x:FullRows="1" ss:DefaultColumnWidth="60">
+
+   <Column ss:Width="200.00"/>
+   <Column ss:Width="33.00" ss:StyleID="s22" />
+   <Column ss:Width="70.00" ss:StyleID="s23" />
+   <Column ss:Width="300.00"/>
+
+${foreach movies movie}
+   <Row>
+    <Cell><Data ss:Type="String">${movie.title}</Data></Cell>
+    <Cell><Data ss:Type="Number">${movie.year}</Data></Cell>
+    <Cell><Data ss:Type="DateTime">${movie.dateAdded;date(yyyy-MM-dd)}T00:00:00.000</Data></Cell>
+    <Cell><Data ss:Type="String">${movie.path}</Data></Cell>
+   </Row>
+${end}
+
+  </Table>
+ </Worksheet>
+</Workbook>

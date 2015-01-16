@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<movies>
+${foreach movies movie}
+    <movie>
+        <title>${movie.title}</title>
+        <year>${movie.year}</year>
+        <added>${movie.dateAdded;date(yyyy-MM-dd)}</added>
+    </movie>
+${end}
+</movies>

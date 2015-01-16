@@ -1,0 +1,669 @@
+2015/01/16 09:25:05:847 INFO r.a: ------------------ VM Info ------------------
+2015/01/16 09:25:05:866 INFO r.a: -- OS Name: Linux
+2015/01/16 09:25:05:867 INFO r.a: -- OS Arch: amd64
+2015/01/16 09:25:05:867 INFO r.a: -- OS Vers: 3.8.0-39-generic
+2015/01/16 09:25:05:868 INFO r.a: -- Java Vers: 1.6.0_33
+2015/01/16 09:25:05:868 INFO r.a: -- Java Home: /usr/lib/jvm/java-6-openjdk-amd64/jre
+2015/01/16 09:25:05:869 INFO r.a: -- User Name: sysadmin
+2015/01/16 09:25:05:869 INFO r.a: -- User Home: /home/sysadmin
+2015/01/16 09:25:05:870 INFO r.a: -- Cur dir: /media/tmp/docker/tmm/files/tinyMediaManager
+2015/01/16 09:25:05:870 INFO r.a: ---------------------------------------------
+2015/01/16 09:25:05:995 INFO r.a: Checking whether we need to use a proxy...
+2015/01/16 09:25:06:007 INFO r.a: Skipping [quals=windows, osname=linux, osarch=amd64, key=resource, value=[windows] tinyMediaManager.new]
+2015/01/16 09:25:06:008 INFO r.a: Skipping [quals=windows, osname=linux, osarch=amd64, key=resource, value=[windows] tinyMediaManagerUpd.new]
+2015/01/16 09:25:06:008 INFO r.a: Skipping [quals=windows, osname=linux, osarch=amd64, key=resource, value=[windows] tinyMediaManagerCMD.new]
+2015/01/16 09:25:06:009 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=resource, value=[mac os x] tinyMediaManagerOSX.sh]
+2015/01/16 09:25:06:009 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=resource, value=[mac os x] JavaApplicationStub.new]
+2015/01/16 09:25:06:015 INFO r.a: Skipping [quals=linux-arm, osname=linux, osarch=amd64, key=resource, value=[linux-arm] native/linux-arm/libmediainfo.so]
+2015/01/16 09:25:06:015 INFO r.a: Skipping [quals=linux-arm, osname=linux, osarch=amd64, key=resource, value=[linux-arm] native/linux-arm/libzen.so]
+2015/01/16 09:25:06:016 INFO r.a: Skipping [quals=linux-i386, osname=linux, osarch=amd64, key=resource, value=[linux-i386] native/linux-i386/libmediainfo.so]
+2015/01/16 09:25:06:016 INFO r.a: Skipping [quals=linux-i386, osname=linux, osarch=amd64, key=resource, value=[linux-i386] native/linux-i386/libzen.so]
+2015/01/16 09:25:06:016 INFO r.a: Skipping [quals=linux-i686, osname=linux, osarch=amd64, key=resource, value=[linux-i686] native/linux-i686/libmediainfo.so]
+2015/01/16 09:25:06:016 INFO r.a: Skipping [quals=linux-i686, osname=linux, osarch=amd64, key=resource, value=[linux-i686] native/linux-i686/libzen.so]
+2015/01/16 09:25:06:017 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libmediainfo.dylib]
+2015/01/16 09:25:06:017 INFO r.a: Skipping [quals=mac os x-i386, osname=linux, osarch=amd64, key=resource, value=[mac os x-i386] native/mac-i386/libmediainfo.dylib]
+2015/01/16 09:25:06:017 INFO r.a: Skipping [quals=windows-amd64, osname=linux, osarch=amd64, key=resource, value=[windows-amd64] native/windows-amd64/MediaInfo.dll]
+2015/01/16 09:25:06:017 INFO r.a: Skipping [quals=windows-x64, osname=linux, osarch=amd64, key=resource, value=[windows-x64] native/windows-x64/MediaInfo.dll]
+2015/01/16 09:25:06:018 INFO r.a: Skipping [quals=windows-x86, osname=linux, osarch=amd64, key=resource, value=[windows-x86] native/windows-x86/MediaInfo.dll]
+2015/01/16 09:25:06:018 INFO r.a: Skipping [quals=windows-x86, osname=linux, osarch=amd64, key=resource, value=[windows-x86] native/windows-x86/mingwm10.dll]
+2015/01/16 09:25:06:018 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libquaqua.jnilib]
+2015/01/16 09:25:06:018 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libquaqua64.jnilib]
+2015/01/16 09:25:06:019 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libquaqua64.dylib]
+2015/01/16 09:25:06:028 INFO r.a: Skipping [quals=mac os x-i386, osname=linux, osarch=amd64, key=resource, value=[mac os x-i386] native/mac-i386/libquaqua.jnilib]
+2015/01/16 09:25:06:028 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=jvmarg, value=[mac os x] -Dapple.awt.graphics.UseQuartz=true]
+2015/01/16 09:25:06:028 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=jvmarg, value=[mac os x] -Xdock:name=tinyMediaManager]
+2015/01/16 09:25:06:040 INFO r.a: remove verification files? true
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:06:186 INFO r.a: Dropping status 'm.detecting_proxy'.
+2015/01/16 09:25:06:568 INFO r.a: No proxy appears to be needed.
+2015/01/16 09:25:06:569 INFO r.a: ---------------- Proxy Info -----------------
+2015/01/16 09:25:06:569 INFO r.a: -- Proxy Host: null
+2015/01/16 09:25:06:569 INFO r.a: -- Proxy Port: null
+2015/01/16 09:25:06:570 INFO r.a: ---------------------------------------------
+2015/01/16 09:25:06:574 INFO r.a: Skipping [quals=windows, osname=linux, osarch=amd64, key=resource, value=[windows] tinyMediaManager.new]
+2015/01/16 09:25:06:575 INFO r.a: Skipping [quals=windows, osname=linux, osarch=amd64, key=resource, value=[windows] tinyMediaManagerUpd.new]
+2015/01/16 09:25:06:575 INFO r.a: Skipping [quals=windows, osname=linux, osarch=amd64, key=resource, value=[windows] tinyMediaManagerCMD.new]
+2015/01/16 09:25:06:576 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=resource, value=[mac os x] tinyMediaManagerOSX.sh]
+2015/01/16 09:25:06:576 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=resource, value=[mac os x] JavaApplicationStub.new]
+2015/01/16 09:25:06:577 INFO r.a: Skipping [quals=linux-arm, osname=linux, osarch=amd64, key=resource, value=[linux-arm] native/linux-arm/libmediainfo.so]
+2015/01/16 09:25:06:578 INFO r.a: Skipping [quals=linux-arm, osname=linux, osarch=amd64, key=resource, value=[linux-arm] native/linux-arm/libzen.so]
+2015/01/16 09:25:06:578 INFO r.a: Skipping [quals=linux-i386, osname=linux, osarch=amd64, key=resource, value=[linux-i386] native/linux-i386/libmediainfo.so]
+2015/01/16 09:25:06:578 INFO r.a: Skipping [quals=linux-i386, osname=linux, osarch=amd64, key=resource, value=[linux-i386] native/linux-i386/libzen.so]
+2015/01/16 09:25:06:579 INFO r.a: Skipping [quals=linux-i686, osname=linux, osarch=amd64, key=resource, value=[linux-i686] native/linux-i686/libmediainfo.so]
+2015/01/16 09:25:06:579 INFO r.a: Skipping [quals=linux-i686, osname=linux, osarch=amd64, key=resource, value=[linux-i686] native/linux-i686/libzen.so]
+2015/01/16 09:25:06:580 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libmediainfo.dylib]
+2015/01/16 09:25:06:580 INFO r.a: Skipping [quals=mac os x-i386, osname=linux, osarch=amd64, key=resource, value=[mac os x-i386] native/mac-i386/libmediainfo.dylib]
+2015/01/16 09:25:06:580 INFO r.a: Skipping [quals=windows-amd64, osname=linux, osarch=amd64, key=resource, value=[windows-amd64] native/windows-amd64/MediaInfo.dll]
+2015/01/16 09:25:06:581 INFO r.a: Skipping [quals=windows-x64, osname=linux, osarch=amd64, key=resource, value=[windows-x64] native/windows-x64/MediaInfo.dll]
+2015/01/16 09:25:06:581 INFO r.a: Skipping [quals=windows-x86, osname=linux, osarch=amd64, key=resource, value=[windows-x86] native/windows-x86/MediaInfo.dll]
+2015/01/16 09:25:06:582 INFO r.a: Skipping [quals=windows-x86, osname=linux, osarch=amd64, key=resource, value=[windows-x86] native/windows-x86/mingwm10.dll]
+2015/01/16 09:25:06:582 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libquaqua.jnilib]
+2015/01/16 09:25:06:582 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libquaqua64.jnilib]
+2015/01/16 09:25:06:583 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libquaqua64.dylib]
+2015/01/16 09:25:06:583 INFO r.a: Skipping [quals=mac os x-i386, osname=linux, osarch=amd64, key=resource, value=[mac os x-i386] native/mac-i386/libquaqua.jnilib]
+2015/01/16 09:25:06:584 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=jvmarg, value=[mac os x] -Dapple.awt.graphics.UseQuartz=true]
+2015/01/16 09:25:06:584 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=jvmarg, value=[mac os x] -Xdock:name=tinyMediaManager]
+2015/01/16 09:25:06:588 INFO r.a: remove verification files? true
+2015/01/16 09:25:06:617 INFO r.a: Able to lock for updates: true
+2015/01/16 09:25:06:631 INFO r.a: Dropping status 'm.validating'.
+2015/01/16 09:25:06:632 INFO r.a: Verifying application: http://tinymediamanager.googlecode.com/svn/dist/
+2015/01/16 09:25:06:632 INFO r.a: Version: -1
+2015/01/16 09:25:06:632 INFO r.a: Class: org.tinymediamanager.TinyMediaManager
+2015/01/16 09:25:06:635 INFO r.a: Failed to load digest: ./digest.txt (No such file or directory). Attempting recovery...
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:06:639 INFO r.a: Attempting to refetch 'digest.txt' from 'http://tinymediamanager.googlecode.com/svn/dist/digest.txt'.
+2015/01/16 09:25:06:640 INFO r.a: Dropping status 'm.checking'.
+2015/01/16 09:25:06:752 INFO r.a: No signers, not verifying file [path=digest.txt]
+2015/01/16 09:25:06:783 INFO r.a: Unversioned digest changed. Revalidating...
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:06:786 INFO r.a: Dropping status 'm.validating'.
+2015/01/16 09:25:06:790 INFO r.a: Resource failed digest check [rsrc=getdown.txt, computed=e98ad190b06987c6893660f401534fcc, expected=1a704bca22c883976bd01e9e5ca7efc6]
+2015/01/16 09:25:06:791 INFO r.a: Attempting to refetch 'getdown.txt' from 'http://tinymediamanager.googlecode.com/svn/dist/getdown.txt'.
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:06:796 INFO r.a: Dropping status 'm.updating_metadata'.
+2015/01/16 09:25:06:928 INFO r.a: Attempting to refetch 'digest.txt' from 'http://tinymediamanager.googlecode.com/svn/dist/digest.txt'.
+2015/01/16 09:25:07:013 INFO r.a: No signers, not verifying file [path=digest.txt]
+2015/01/16 09:25:07:028 INFO r.a: Skipping [quals=windows, osname=linux, osarch=amd64, key=resource, value=[windows] tinyMediaManager.new]
+2015/01/16 09:25:07:028 INFO r.a: Skipping [quals=windows, osname=linux, osarch=amd64, key=resource, value=[windows] tinyMediaManagerUpd.new]
+2015/01/16 09:25:07:028 INFO r.a: Skipping [quals=windows, osname=linux, osarch=amd64, key=resource, value=[windows] tinyMediaManagerCMD.new]
+2015/01/16 09:25:07:029 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=resource, value=[mac os x] tinyMediaManagerOSX.sh]
+2015/01/16 09:25:07:029 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=resource, value=[mac os x] JavaApplicationStub.new]
+2015/01/16 09:25:07:029 INFO r.a: Skipping [quals=linux-arm, osname=linux, osarch=amd64, key=resource, value=[linux-arm] native/linux-arm/libmediainfo.so]
+2015/01/16 09:25:07:030 INFO r.a: Skipping [quals=linux-arm, osname=linux, osarch=amd64, key=resource, value=[linux-arm] native/linux-arm/libzen.so]
+2015/01/16 09:25:07:030 INFO r.a: Skipping [quals=linux-i386, osname=linux, osarch=amd64, key=resource, value=[linux-i386] native/linux-i386/libmediainfo.so]
+2015/01/16 09:25:07:030 INFO r.a: Skipping [quals=linux-i386, osname=linux, osarch=amd64, key=resource, value=[linux-i386] native/linux-i386/libzen.so]
+2015/01/16 09:25:07:030 INFO r.a: Skipping [quals=linux-i686, osname=linux, osarch=amd64, key=resource, value=[linux-i686] native/linux-i686/libmediainfo.so]
+2015/01/16 09:25:07:031 INFO r.a: Skipping [quals=linux-i686, osname=linux, osarch=amd64, key=resource, value=[linux-i686] native/linux-i686/libzen.so]
+2015/01/16 09:25:07:031 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libmediainfo.dylib]
+2015/01/16 09:25:07:031 INFO r.a: Skipping [quals=mac os x-i386, osname=linux, osarch=amd64, key=resource, value=[mac os x-i386] native/mac-i386/libmediainfo.dylib]
+2015/01/16 09:25:07:031 INFO r.a: Skipping [quals=windows-amd64, osname=linux, osarch=amd64, key=resource, value=[windows-amd64] native/windows-amd64/MediaInfo.dll]
+2015/01/16 09:25:07:031 INFO r.a: Skipping [quals=windows-x64, osname=linux, osarch=amd64, key=resource, value=[windows-x64] native/windows-x64/MediaInfo.dll]
+2015/01/16 09:25:07:032 INFO r.a: Skipping [quals=windows-x86, osname=linux, osarch=amd64, key=resource, value=[windows-x86] native/windows-x86/MediaInfo.dll]
+2015/01/16 09:25:07:032 INFO r.a: Skipping [quals=windows-x86, osname=linux, osarch=amd64, key=resource, value=[windows-x86] native/windows-x86/mingwm10.dll]
+2015/01/16 09:25:07:032 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libquaqua.jnilib]
+2015/01/16 09:25:07:032 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libquaqua64.jnilib]
+2015/01/16 09:25:07:033 INFO r.a: Skipping [quals=mac os x-x86_64, osname=linux, osarch=amd64, key=resource, value=[mac os x-x86_64] native/mac-x86_64/libquaqua64.dylib]
+2015/01/16 09:25:07:033 INFO r.a: Skipping [quals=mac os x-i386, osname=linux, osarch=amd64, key=resource, value=[mac os x-i386] native/mac-i386/libquaqua.jnilib]
+2015/01/16 09:25:07:033 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=jvmarg, value=[mac os x] -Dapple.awt.graphics.UseQuartz=true]
+2015/01/16 09:25:07:034 INFO r.a: Skipping [quals=mac os x, osname=linux, osarch=amd64, key=jvmarg, value=[mac os x] -Xdock:name=tinyMediaManager]
+2015/01/16 09:25:07:034 INFO r.a: remove verification files? true
+2015/01/16 09:25:07:038 INFO r.a: Dropping status 'm.validating'.
+2015/01/16 09:25:07:040 INFO r.a: Resource failed digest check [rsrc=tmm.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:07:105 INFO r.a: Resource failed digest check [rsrc=lib/DJNativeSwing-SWT.jar, computed=9f5b336bd5b6321aa34a2d3ec59668f3, expected=0c6f225816e45b1533e39c6bdffd227d]
+2015/01/16 09:25:07:137 INFO r.a: Resource failed digest check [rsrc=lib/DJNativeSwing.jar, computed=bc707d9842e122d38224ac9a554368e6, expected=3754a3e65a11b765794b63d122aef64a]
+2015/01/16 09:25:08:330 INFO r.a: Resource failed digest check [rsrc=lib/resources.jar, computed=406abc3dff6728ab1d1561636d638ebd, expected=361d8178abe5ed3714f14af52b119e63]
+2015/01/16 09:25:08:346 INFO r.a: Resource failed digest check [rsrc=lib/retrofit.jar, computed=6db91ad3166fb2638b439464a0bd4029, expected=cfab3eba29bb572b3bdb62802d30ec8a]
+2015/01/16 09:25:08:347 INFO r.a: Resource failed digest check [rsrc=lib/rottentomatoesapi.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:383 INFO r.a: Resource failed digest check [rsrc=lib/trakt-java.jar, computed=7a40bc92a6533edf160429127966383d, expected=3c44888d2f0a917f4a28a836e39e7c95]
+2015/01/16 09:25:08:397 INFO r.a: Resource failed digest check [rsrc=getdown-new.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:398 INFO r.a: Resource failed digest check [rsrc=version, computed=b46e48eb61745b9ea83d17e585655e56, expected=d5839edaded6e331eaf3ce7b01489891]
+2015/01/16 09:25:08:401 INFO r.a: Resource failed digest check [rsrc=changelog.txt, computed=cb9c574134df3c97fd8803778b687596, expected=4b935280a9bf18fed94d0cb8991bb72d]
+2015/01/16 09:25:08:402 INFO r.a: Resource failed digest check [rsrc=env.txt, error=java.io.FileNotFoundException: ./env.txt (No such file or directory)]
+2015/01/16 09:25:08:402 INFO r.a: Resource failed digest check [rsrc=locale/messages_cs.properties, error=java.io.FileNotFoundException: ./locale/messages_cs.properties (No such file or directory)]
+2015/01/16 09:25:08:403 INFO r.a: Resource failed digest check [rsrc=locale/messages_da.properties, error=java.io.FileNotFoundException: ./locale/messages_da.properties (No such file or directory)]
+2015/01/16 09:25:08:404 INFO r.a: Resource failed digest check [rsrc=locale/messages_de.properties, error=java.io.FileNotFoundException: ./locale/messages_de.properties (No such file or directory)]
+2015/01/16 09:25:08:404 INFO r.a: Resource failed digest check [rsrc=locale/messages_es.properties, error=java.io.FileNotFoundException: ./locale/messages_es.properties (No such file or directory)]
+2015/01/16 09:25:08:405 INFO r.a: Resource failed digest check [rsrc=locale/messages_fr.properties, error=java.io.FileNotFoundException: ./locale/messages_fr.properties (No such file or directory)]
+2015/01/16 09:25:08:406 INFO r.a: Resource failed digest check [rsrc=locale/messages_hu.properties, error=java.io.FileNotFoundException: ./locale/messages_hu.properties (No such file or directory)]
+2015/01/16 09:25:08:406 INFO r.a: Resource failed digest check [rsrc=locale/messages_it.properties, error=java.io.FileNotFoundException: ./locale/messages_it.properties (No such file or directory)]
+2015/01/16 09:25:08:407 INFO r.a: Resource failed digest check [rsrc=locale/messages_ko.properties, error=java.io.FileNotFoundException: ./locale/messages_ko.properties (No such file or directory)]
+2015/01/16 09:25:08:407 INFO r.a: Resource failed digest check [rsrc=locale/messages_nl.properties, error=java.io.FileNotFoundException: ./locale/messages_nl.properties (No such file or directory)]
+2015/01/16 09:25:08:408 INFO r.a: Resource failed digest check [rsrc=locale/messages_no.properties, error=java.io.FileNotFoundException: ./locale/messages_no.properties (No such file or directory)]
+2015/01/16 09:25:08:409 INFO r.a: Resource failed digest check [rsrc=locale/messages_pl.properties, error=java.io.FileNotFoundException: ./locale/messages_pl.properties (No such file or directory)]
+2015/01/16 09:25:08:409 INFO r.a: Resource failed digest check [rsrc=locale/messages_pt.properties, error=java.io.FileNotFoundException: ./locale/messages_pt.properties (No such file or directory)]
+2015/01/16 09:25:08:410 INFO r.a: Resource failed digest check [rsrc=locale/messages_ro.properties, error=java.io.FileNotFoundException: ./locale/messages_ro.properties (No such file or directory)]
+2015/01/16 09:25:08:410 INFO r.a: Resource failed digest check [rsrc=locale/messages_ru.properties, error=java.io.FileNotFoundException: ./locale/messages_ru.properties (No such file or directory)]
+2015/01/16 09:25:08:411 INFO r.a: Resource failed digest check [rsrc=locale/messages_sk.properties, error=java.io.FileNotFoundException: ./locale/messages_sk.properties (No such file or directory)]
+2015/01/16 09:25:08:412 INFO r.a: Resource failed digest check [rsrc=locale/messages_sv.properties, error=java.io.FileNotFoundException: ./locale/messages_sv.properties (No such file or directory)]
+2015/01/16 09:25:08:412 INFO r.a: Resource failed digest check [rsrc=locale/messages_tr.properties, error=java.io.FileNotFoundException: ./locale/messages_tr.properties (No such file or directory)]
+2015/01/16 09:25:08:413 INFO r.a: Resource failed digest check [rsrc=locale/messages_vi.properties, error=java.io.FileNotFoundException: ./locale/messages_vi.properties (No such file or directory)]
+2015/01/16 09:25:08:413 INFO r.a: Resource failed digest check [rsrc=locale/messages_zh.properties, error=java.io.FileNotFoundException: ./locale/messages_zh.properties (No such file or directory)]
+2015/01/16 09:25:08:503 INFO r.a: Resource failed digest check [rsrc=templates/readme.txt, error=java.io.FileNotFoundException: ./templates/readme.txt (No such file or directory)]
+2015/01/16 09:25:08:503 INFO r.a: Resource failed digest check [rsrc=templates/DetailExampleHtml.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:504 INFO r.a: Resource failed digest check [rsrc=templates/DetailExample2Html.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:504 INFO r.a: Resource failed digest check [rsrc=templates/ExcelXml.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:505 INFO r.a: Resource failed digest check [rsrc=templates/ListExampleCsv.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:505 INFO r.a: Resource failed digest check [rsrc=templates/ListExampleHtml.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:506 INFO r.a: Resource failed digest check [rsrc=templates/ListExampleXml.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:506 INFO r.a: Resource failed digest check [rsrc=templates/jQueryliscious.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:507 INFO r.a: Resource failed digest check [rsrc=templates/SimpleConfluence.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:507 INFO r.a: Resource failed digest check [rsrc=templates/TvShowDetailExampleXml.jar, error=java.util.zip.ZipException: error in opening zip file]
+2015/01/16 09:25:08:508 INFO r.a: 40 of 89 rsrcs require update (0 assumed valid).
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:08:513 INFO r.a: Dropping status 'm.resolving'.
+2015/01/16 09:25:12:173 INFO r.a: Downloading 5100958 bytes...
+2015/01/16 09:25:12:281 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/tmm.jar, size=1851609]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:12:295 INFO r.a: Dropping status 'm.downloading'.
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:12:785 INFO r.a: Dropping status 'm.downloading'.
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:13:287 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:13:834 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/lib/DJNativeSwing-SWT.jar, size=555562]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:13:842 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:14:210 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/lib/DJNativeSwing.jar, size=113398]
+2015/01/16 09:25:14:427 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/lib/resources.jar, size=1109437]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:14:431 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:14:980 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/lib/retrofit.jar, size=118125]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:14:984 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:15:139 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/lib/rottentomatoesapi.jar, size=25456]
+2015/01/16 09:25:15:265 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/lib/trakt-java.jar, size=189530]
+2015/01/16 09:25:15:444 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/getdown-new.jar, size=147285]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:15:484 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:15:584 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/version, size=127]
+2015/01/16 09:25:15:675 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/changelog.txt, size=6239]
+2015/01/16 09:25:15:765 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/env.txt, size=0]
+2015/01/16 09:25:15:888 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_cs.properties, size=33592]
+2015/01/16 09:25:16:030 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_da.properties, size=32998]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:16:036 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:16:131 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_de.properties, size=34485]
+2015/01/16 09:25:16:260 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_es.properties, size=36677]
+2015/01/16 09:25:16:370 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_fr.properties, size=38162]
+2015/01/16 09:25:16:496 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_hu.properties, size=34869]
+2015/01/16 09:25:16:624 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_it.properties, size=33421]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:16:627 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:16:770 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_ko.properties, size=33800]
+2015/01/16 09:25:16:888 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_nl.properties, size=33140]
+2015/01/16 09:25:17:024 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_no.properties, size=32470]
+2015/01/16 09:25:17:146 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_pl.properties, size=32998]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:17:156 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:17:264 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_pt.properties, size=33819]
+2015/01/16 09:25:17:366 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_ro.properties, size=32998]
+2015/01/16 09:25:17:487 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_ru.properties, size=34379]
+2015/01/16 09:25:17:588 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_sk.properties, size=34515]
+2015/01/16 09:25:17:700 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_sv.properties, size=33872]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:17:709 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:17:821 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_tr.properties, size=34763]
+2015/01/16 09:25:17:921 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_vi.properties, size=33245]
+2015/01/16 09:25:18:022 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/locale/messages_zh.properties, size=30674]
+2015/01/16 09:25:18:170 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/templates/readme.txt, size=8929]
+2015/01/16 09:25:18:280 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/templates/DetailExampleHtml.jar, size=4657]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:18:284 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:18:400 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/templates/DetailExample2Html.jar, size=4890]
+2015/01/16 09:25:18:509 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/templates/ExcelXml.jar, size=1137]
+2015/01/16 09:25:18:625 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/templates/ListExampleCsv.jar, size=744]
+2015/01/16 09:25:18:736 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/templates/ListExampleHtml.jar, size=1624]
+2015/01/16 09:25:18:845 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/templates/ListExampleXml.jar, size=789]
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:18:851 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:18:976 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/templates/jQueryliscious.jar, size=146119]
+2015/01/16 09:25:19:162 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/templates/SimpleConfluence.jar, size=169211]
+2015/01/16 09:25:19:336 INFO r.a: Downloading resource [url=http://tinymediamanager.googlecode.com/svn/dist/templates/TvShowDetailExampleXml.jar, size=1213]
+2015/01/16 09:25:19:337 INFO r.a: Verifying application: http://tinymediamanager.googlecode.com/svn/dist/
+2015/01/16 09:25:19:337 INFO r.a: Version: -1
+2015/01/16 09:25:19:337 INFO r.a: Class: org.tinymediamanager.TinyMediaManager
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:19:339 INFO r.a: Attempting to refetch 'digest.txt' from 'http://tinymediamanager.googlecode.com/svn/dist/digest.txt'.
+2015/01/16 09:25:19:340 INFO r.a: Dropping status 'm.downloading'.
+2015/01/16 09:25:19:342 INFO r.a: Dropping status 'm.validating'.
+Exception in thread "AWT-EventQueue-0" java.awt.HeadlessException
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:547)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at javax.swing.JFrame.<init>(JFrame.java:218)
+	at com.threerings.getdown.launcher.GetdownApp$1.createContainer(Unknown Source)
+	at com.threerings.getdown.launcher.Getdown$5.run(Unknown Source)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:226)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:673)
+	at java.awt.EventQueue.access$300(EventQueue.java:96)
+	at java.awt.EventQueue$2.run(EventQueue.java:634)
+	at java.awt.EventQueue$2.run(EventQueue.java:632)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.AccessControlContext$1.doIntersectionPrivilege(AccessControlContext.java:108)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:643)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:275)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:200)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:190)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:185)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:177)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:138)
+2015/01/16 09:25:19:345 INFO r.a: Dropping status 'm.checking'.
+2015/01/16 09:25:19:424 INFO r.a: No signers, not verifying file [path=digest.txt]
+2015/01/16 09:25:19:430 INFO r.a: Dropping status 'm.validating'.
+2015/01/16 09:25:20:411 INFO r.a: Resources verified.
+2015/01/16 09:25:20:411 INFO r.a: Dropping status 'm.launching'.
+2015/01/16 09:25:20:415 INFO r.a: Didn't find any custom environment variables, not setting any.
+2015/01/16 09:25:20:415 INFO r.a: Running /usr/lib/jvm/java-6-openjdk-amd64/jre/bin/java
+  -classpath
+  /media/tmp/docker/tmm/files/tinyMediaManager/./tmm.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/DJNativeSwing-SWT.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/DJNativeSwing.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/JSplitButton.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/JTattoo.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/LightBox.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/Scaling-bin.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/api-common.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/asm.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/betterbeansbinding-core.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/betterbeansbinding-el.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/betterbeansbinding-swingbinding.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/commons-codec.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/commons-io.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/commons-lang3.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/core.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/fanarttvapi.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/forms.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/glazedlists.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/gson.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/httpclient.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/httpcore.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/httpmime.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/image-viewer.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/imgscalr-lib.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/jackson-annotations.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/jackson-core.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/jackson-databind.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/jcl-over-slf4j.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/jdom.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/jgoodies-common.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/jmte-unbundled.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/jna.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/jsoup.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/log4j-over-slf4j.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/logback-classic.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/logback-core.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/objectdb.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/platform.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/quaqua-filechooser-only.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/resources.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/retrofit.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/rottentomatoesapi.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/slf4j-api.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/themoviedbapi.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/thetvdbapi.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/trakt-java.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/twinkle.jar:/media/tmp/docker/tmm/files/tinyMediaManager/./lib/xmlrpc-client.jar:lib/swt.jar:locale/*:lib/swt.jar:locale/*:lib/swt.jar:locale/*
+  -Dcom.threerings.getdown=true
+  -Xms64m
+  -Xmx512m
+  -Xss512k
+  -splash:splashscreen.png
+  -Djava.net.preferIPv4Stack=true
+  -Dfile.encoding=UTF-8
+  -XX:CompileCommand=exclude,ca/odell/glazedlists/impl/filter/TextMatchers,matches
+  -XX:CompileCommand=exclude,ca/odell/glazedlists/impl/filter/BoyerMooreCaseInsensitiveTextSearchStrategy,indexOf
+  -Djna.nosys=true
+  org.tinymediamanager.TinyMediaManager

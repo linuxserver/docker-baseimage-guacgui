@@ -54,6 +54,7 @@ code = lib/platform.jar
 code = lib/quaqua-filechooser-only.jar
 code = lib/resources.jar
 code = lib/retrofit.jar
+code = lib/rottentomatoesapi.jar
 code = lib/slf4j-api.jar
 code = lib/themoviedbapi.jar
 code = lib/thetvdbapi.jar

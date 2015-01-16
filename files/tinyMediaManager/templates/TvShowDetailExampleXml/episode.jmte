@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<episode>
+  <title>${episode.title}</title>
+  <season>${episode.season}</season>
+  <episode>${episode.episode}</episode>
+  <plot>${episode.plot}</plot>
+</episode>

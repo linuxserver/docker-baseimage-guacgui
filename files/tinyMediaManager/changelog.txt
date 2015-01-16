@@ -1,3 +1,34 @@
+Version 2.6.5
+=======================
++ enhanced TV show and movie renamer (http://goo.gl/8pbkFj)
+  IMPORTANT: REVIEW YOUR TV SHOW RENAMER SETTINGS!
+  
++ DVD ordering of episodes (http://goo.gl/YBD5qJ)
++ added memory options especially for large media libraries
++ write thumb url into the NFO for multi episode files
++ added h265 logo
++ (experimental) added Rotten Tomates scraper
++ added downloading of custom image-urls in the image chooser
++ added genre to the movie renamer
++ now also allowing folder.jpg/png for disc images
++ option to change the language while scraping (movie and TV show chooser)
++ added several DTS profiles to mediainfo detection (+logos)
+x added some workarounds for failing TVDB searches
+x proper handling of the watched state in the NFO
+x catching some NFO parsing problems
+x improved parsing of imdb plot
+x improved performance of artwork detection for movie sets
+x better detection of media source (brrip, hdrip, hdtvrip, ...)
+x fixed scraping of localized movie metadata
+x fixed downloading of season posters
+x fixed some minor issues with the command line version
+x fixed Mac OSX startup script
+x fixed some export template issues
+x fixed some performance issues with movie set artwork detection
+x fixed sort title generation for movie sets
+x respect max. screen resolution when opening dialogs
+x enabled double click in the episode chooser dialog
+
 Version 2.6.4 
 =======================
 + changed Fanart.tv to v3 API (with clientKey)

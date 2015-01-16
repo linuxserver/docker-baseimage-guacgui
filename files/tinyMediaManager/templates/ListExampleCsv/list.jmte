@@ -1,0 +1,3 @@
+sep=,${-- first line defines fixed separator char; US defaults to "," non-US to ";" }
+${foreach movies movie}${movie.title},${movie.year},${movie.dateAdded;date(yyyy-MM-dd)},${movie.path}
+${end}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tvshow>
+  <title>${tvShow.title}</title>
+  <seasons>${tvShow.seasonCount}</seasons>
+  <episodes>${tvShow.episodeCount}</episodes>
+  <plot>${tvShow.plot}</plot>
+  <!-- iterate over all episodes -->    
+  ${foreach tvShow.episodes episode}
+  <episode>
+    <title>${episode.title}</title>
+	<season>${episode.season}</season>
+	<episode>${episode.episode}</episode>
+  </episode>
+  ${end}
+</tvshow>

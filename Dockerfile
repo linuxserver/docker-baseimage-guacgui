@@ -1,13 +1,35 @@
 #TinyMediaManager 
-FROM ubuntu:utopic
+FROM phusion/baseimage:0.9.16
 MAINTAINER Carlos Hernandez <carlos@techbyte.ca>
+
+#########################################
+##        ENVIRONMENTAL CONFIG         ##
+#########################################
+# Set correct environment variables
+ENV HOME="/root" LC_ALL="C.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
+
+# Use baseimage-docker's init system
+CMD ["/sbin/my_init"]
+
+#########################################
+##         RUN INSTALL SCRIPT          ##
+#########################################
+ADD ./files/* /tmp/
+RUN chmod +x /tmp/install/tmm_install.sh && /tmp/install/tmm_install.sh && rm /tmp/install/tmm_install.sh
+RUN chmod +x /tmp/install/wsgate_install.sh && /tmp/install/wsgate_install.sh && rm /tmp/install/wsgate_install.sh
+
+#########################################
+##         EXPORTS AND VOLUMES         ##
+#########################################
+VOLUME ["/config"]
+EXPOSE 9000 3389
+
 
 # Let the container know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
 
 # Set locale to UTF-8
-ENV LANGUAGE en_US.UTF-8
-ENV LANG en_US.UTF-8
+ENV HOME="/root" LANGUAGE="en_US.UTF-8"  LANG="en_US.UTF-8" LC_ALL="C.UTF-8"
 RUN locale-gen en_US en_US.UTF-8
 RUN update-locale LANG=en_US.UTF-8
 RUN dpkg-reconfigure locales

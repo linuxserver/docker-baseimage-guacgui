@@ -1,4 +1,0 @@
-# Programs that will run after Openbox has started
-
-cd /tinyMediaManager
-./tinyMediaManager.sh

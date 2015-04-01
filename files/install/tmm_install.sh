@@ -8,8 +8,8 @@
 export DEBIAN_FRONTEND="noninteractive"
 usermod -u 99 nobody
 usermod -g 100 nobody
-usermod -d /home nobody
-chown -R nobody:users /home
+usermod -m -d /nobody nobody
+usermod -s /bin/bash nobody
 usermod -a -G adm,sudo nobody
 echo "nobody:PASSWD" | chpasswd
 
@@ -30,9 +30,8 @@ apt-get upgrade -qq
 apt-get install -qy --force-yes --no-install-recommends xvfb \
 							openjdk-7-jre \
 							wget \
-							openbox \ 
-							python-pip \ 
-							unzip \                                                          
+							openbox \
+							unzip \
 							git \
 							sudo \
 							ttf-ubuntu-font-family
@@ -46,7 +45,7 @@ apt-get install -qy --force-yes --no-install-recommends xvfb \
 mkdir /nobody && cp -R ~/.[a-zA-Z0-9]* /nobody
 mkdir /nobody/.vnc
 mkdir -p /nobody/.config/openbox
-rm -r /nobody/.cache; mkdir /nobody/.cache
+mkdir /nobody/.cache
 
 # Openbox User nobody autostart
 cat <<'EOT' > /nobody/.config/openbox/autostart
@@ -56,16 +55,18 @@ cd /tinyMediaManager
 ./tinyMediaManager.sh
 EOT
 
-# CONFIG
-cat <<'EOT' > /etc/my_init.d/00_config.sh
+#config
+cat <<'EOT' > /etc/my_init.d/config.sh
+#!/bin/bash
 if [[ $(cat /etc/timezone) != $TZ ]] ; then
   echo "$TZ" > /etc/timezone
   dpkg-reconfigure -f noninteractive tzdata
 fi
 EOT
 
-cat <<'EOT' > /etc/my_init.d/01_tmm_config.sh
-echo "---> Setting up tinyMediaManager in volume..."
+#tmm config
+cat <<'EOT' > /etc/my_init.d/tmm_config.sh
+#!/bin/bash
 [[ ! -d /config ]] && mkdir /config
 [[ ! -d /config/log ]] && mkdir /config/log
 [[ ! -d /config/logs ]] && mkdir /config/logs
@@ -73,16 +74,14 @@ echo "---> Setting up tinyMediaManager in volume..."
 [[ ! -e /config/launcher.log ]] && touch /config/launcher.log
 [[ ! -e /config/config.xml ]] && cp /tmmConfig/config.xml /config/config.xml
 [[ ! -e /config/tmm.odb ]] && cp /tmmConfig/tmm.odb /config/tmm.odb
-
+[[ ! -L /tinyMediaManager/log ]] && ln -s /config/log /tinyMediaManager/log
+[[ ! -L /tinyMediaManager/logs ]] && ln -s /config/logs /tinyMediaManager/logs
+[[ ! -L /tinyMediaManager/backup ]] && ln -s /config/backup /tinyMediaManager/backup
+[[ ! -L /tinyMediaManager/launcher.log ]] && ln -s /config/launcher.log /tinyMediaManager/launcher.log
+[[ ! -L /tinyMediaManager/config.xml ]] && ln -s /config/config.xml /tinyMediaManager/config.xml
+[[ ! -L /tinyMediaManager/tmm.odb ]] && ln -s /config/tmm.odb /tinyMediaManager/tmm.odb
 chown -R nobody:users /config
-
-echo "---> Linking config files..."
-ln -s /config/log /tinyMediaManager/log
-ln -s /config/logs /tinyMediaManager/logs
-ln -s /config/backup /tinyMediaManager/backup
-ln -s /config/launcher.log /tinyMediaManager/launcher.log
-ln -s /config/config.xml /tinyMediaManager/config.xml
-ln -s /config/tmm.odb /tinyMediaManager/tmm.odb
+chown -R nobody:users /tinyMediaManager
 EOT
 
 # Xvfb
@@ -132,9 +131,7 @@ mkdir -p /etc/service/openbox
 cat <<'EOT' > /etc/service/openbox/run
 #!/bin/bash
 
-DISPLAY=:1
-
-exec /usr/bin/openbox-sessio >> /var/log/openbox_run.log 2>&1
+DISPLAY=:1 /usr/bin/openbox-session >> /var/log/openbox_run.log 2>&1
 EOT
 
 chmod -R +x /etc/service/ /etc/my_init.d/

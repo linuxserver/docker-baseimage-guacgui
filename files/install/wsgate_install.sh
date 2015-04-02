@@ -18,7 +18,7 @@ mkdir -p /etc/service/wsgate
 cat <<'EOT' > /etc/service/wsgate/run
 #!/bin/bash
 cd /wsgate
-#./wsgate -c wsgate.ini >> /var/log/wsgate 2>&1
+./wsgate -c wsgate.ini >> /var/log/wsgate 2>&1
 EOT
 
 
@@ -38,7 +38,7 @@ mv /tmp/wsgate.ini /wsgate/wsgate.ini
 #########################################
 
 # Clean APT install files
-#apt-get purge --remove build-essential cmake subversion subversion-tools svn2cl git -y 
-#apt-get autoremove -y 
-#apt-get clean -y
+apt-get purge --remove build-essential cmake git -y 
+apt-get autoremove -y 
+apt-get clean -y
 rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp/*

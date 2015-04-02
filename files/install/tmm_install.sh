@@ -31,6 +31,7 @@ apt-get install -qy --force-yes --no-install-recommends xvfb \
 							openjdk-7-jre \
 							wget \
 							openbox \
+							python-pip \
 							unzip \
 							git \
 							sudo \

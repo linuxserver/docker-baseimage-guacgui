@@ -1,33 +1,4 @@
 #!/bin/bash
-#########################################
-##    REPOSITORIES AND DEPENDENCIES    ##
-#########################################
-
-# Install dependencies
-apt-get install -qy --force-yes build-essential \
-				g++-4.8 \
-				libxml++2.6-dev \
-				libssl-dev \
-				libboost1.54-all-dev \
-				libpng-dev \
-				libdwarf-dev \
-				subversion \
-				subversion-tools \
-				svn2cl \
-				autotools-dev \
-				autoconf \
-				libtool \
-				git \
-				binutils-dev \
-				binutils-multiarch-dev \
-				cmake
-
-
-# replace old gcc/g++ with new one
-rm /usr/bin/g++  
-ln -s /usr/bin/g++-4.8 /usr/bin/g++  
-rm /usr/bin/gcc  
-ln -s /usr/bin/gcc-4.8 /usr/bin/gcc 
 
 #########################################
 ##     BUILDING FreeRDP-WebConnect     ##
@@ -36,6 +7,7 @@ echo "---- Downloading FreeRDP-WebConnect Project ----"
 cd /tmp
 git clone https://github.com/HurricaneHernandez/FreeRDP-WebConnect.git
 cd FreeRDP-WebConnect
+./install_prereqs.sh
 ./setup-all.sh -f
 
 #########################################
@@ -45,8 +17,8 @@ cd FreeRDP-WebConnect
 mkdir -p /etc/service/wsgate
 cat <<'EOT' > /etc/service/wsgate/run
 #!/bin/bash
-
-#exec /wsgate/wsgate -c /wsgate/wsgate.ini >> /var/log/wsgate 2>&1
+cd /wsgate
+#./wsgate -c wsgate.ini >> /var/log/wsgate 2>&1
 EOT
 
 

@@ -31,6 +31,7 @@ apt-get install -qy --force-yes --no-install-recommends xvfb \
 							wget \
 							openbox \
 							unzip \
+							python2.7 \
 							x11vnc 
 
 # xrdp needs to be installed seperately
@@ -130,7 +131,16 @@ cat <<'EOT' > /etc/service/x11vnc/run
 #!/bin/bash
 exec 2>&1
 
-x11vnc -display :1 -xkb
+exec x11vnc -display :1 -xkb
+EOT
+
+# noVNC
+mkdir -p /etc/service/noVNC
+cat <<'EOT' > /etc/service/noVNC/run
+#!/bin/bash
+exec 2>&1
+cd /noVNC
+exec /noVNC/utils/launch.sh
 EOT
 
 # xrdp
@@ -170,7 +180,7 @@ cat <<'EOT' > /etc/service/openbox/run
 #!/bin/bash
 exec 2>&1
 
-exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody  /usr/bin/openbox-session >> /var/log/openbox_run.log 2>&1
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody  /usr/bin/openbox-session
 EOT
 
 chmod -R +x /etc/service/ /etc/my_init.d/
@@ -183,4 +193,8 @@ chmod -R +x /etc/service/ /etc/my_init.d/
 mv /tmp/tmmConfig /tmmConfig
 mv /tmp/tinyMediaManager /
 
-chmod +x /tinyMediaManager/tinyMediaManager.sh 
+# Install noVNC
+mv /tmp/noVNC /noVNC
+
+# Make 2.7 python default
+ln -s /usr/bin/python2.7 /usr/bin/python

@@ -58,6 +58,7 @@
         <jar href="lib/quaqua-filechooser-only.jar" />
         <jar href="lib/resources.jar" />
         <jar href="lib/retrofit.jar" />
+        <jar href="lib/rottentomatoesapi.jar" />
         <jar href="lib/slf4j-api.jar" />
         <jar href="lib/themoviedbapi.jar" />
         <jar href="lib/thetvdbapi.jar" />

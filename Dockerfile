@@ -1,5 +1,5 @@
 # tinyMediaManager 
-FROM phusion/baseimage:0.9.16
+FROM hurricane/baseimage-docker
 MAINTAINER Carlos Hernandez <carlos@techbyte.ca>
 
 #########################################

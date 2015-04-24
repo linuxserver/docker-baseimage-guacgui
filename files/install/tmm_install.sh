@@ -21,8 +21,9 @@ rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 #########################################
 
 # Repositories
-add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty universe multiverse"
-add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse"
+echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt utopic main universe restricted' > /etc/apt/sources.list
+echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt utopic-updates main universe restricted' >> /etc/apt/sources.list
+
 
 # Install Dependencies
 apt-get update -qq
@@ -131,7 +132,7 @@ cat <<'EOT' > /etc/service/x11vnc/run
 #!/bin/bash
 exec 2>&1
 
-exec x11vnc -display :1 -xkb
+exec x11vnc -display :1 -xkb -ncache 10 -rfbportv6 -1 -noipv6 -no6 -rfbport 5900
 EOT
 
 # noVNC
@@ -140,7 +141,7 @@ cat <<'EOT' > /etc/service/noVNC/run
 #!/bin/bash
 exec 2>&1
 cd /noVNC
-exec python /noVNC/utils/websockify --web /noVNC 6080 localhost:5900
+exec python /noVNC/utils/websockify --web /noVNC 6080 localhost:5900 
 EOT
 
 # xrdp
@@ -152,14 +153,14 @@ RSAKEYS=/etc/xrdp/rsakeys.ini
 
     # Check for rsa key
     if [ ! -f $RSAKEYS ] || cmp $RSAKEYS /usr/share/doc/xrdp/rsakeys.ini > /dev/null; then
-        log_action_begin_msg "Generating xrdp RSA keys..."
+        echo "Generating xrdp RSA keys..."
         (umask 077 ; xrdp-keygen xrdp $RSAKEYS)
         chown root:root $RSAKEYS
         if [ ! -f $RSAKEYS ] ; then
-            log_action_end_msg 1 "could not create $RSAKEYS"
+            echo "could not create $RSAKEYS"
             exit 1
         fi
-        log_action_end_msg 0 "done"
+        echo "done"
     fi
 
 exec /usr/sbin/xrdp --nodaemon 

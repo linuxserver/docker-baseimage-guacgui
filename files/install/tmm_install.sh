@@ -140,7 +140,7 @@ cat <<'EOT' > /etc/service/noVNC/run
 #!/bin/bash
 exec 2>&1
 cd /noVNC
-exec /noVNC/utils/launch.sh
+exec python /noVNC/utils/websockify --web /noVNC 6080 localhost:5900
 EOT
 
 # xrdp

@@ -34,7 +34,8 @@ apt-get install -qy --force-yes --no-install-recommends xvfb \
 							unzip \
 							python2.7 \
 							x11vnc 
-
+# Upgrade x11vnc
+dpkg -i /tmp/x11nvc/*.dpkg
 # xrdp needs to be installed seperately
 apt-get install -qy --force-yes xrdp
 
@@ -132,7 +133,7 @@ cat <<'EOT' > /etc/service/x11vnc/run
 #!/bin/bash
 exec 2>&1
 
-exec x11vnc -display :1 -xkb -ncache 10 -rfbportv6 -1 -noipv6 -no6 -rfbport 5900
+exec x11vnc -display :1 -xkb -rfbportv6 -1 -noipv6 -no6 -rfbport 5900
 EOT
 
 # noVNC

@@ -119,7 +119,7 @@ EnableSyslog=1
 SyslogLevel=DEBUG
 
 [xrdp1]
-name=sesman-X11rdp
+name=tinyMediaManaer
 lib=libxup.so
 username=na
 password=na

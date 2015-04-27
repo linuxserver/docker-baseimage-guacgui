@@ -4,21 +4,38 @@
 ##        ENVIRONMENTAL CONFIG         ##
 #########################################
 
-### Version of guacamole to be installed
-ENV GUAC_VER 0.9.3
+# Configure user nobody to match unRAID's settings
+export DEBIAN_FRONTEND="noninteractive"
+usermod -u 99 nobody
+usermod -g 100 nobody
+usermod -m -d /nobody nobody
+usermod -s /bin/bash nobody
+usermod -a -G adm,sudo nobody
+echo "nobody:PASSWD" | chpasswd
+
+# Disable SSH
+rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 #########################################
 ##    REPOSITORIES AND DEPENDENCIES    ##
 #########################################
 
 # Repositories
-echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt utopic main universe restricted' > /etc/apt/sources.list
-echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt utopic-updates main universe restricted' >> /etc/apt/sources.list
+echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main universe restricted' > /etc/apt/sources.list
+echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main universe restricted' >> /etc/apt/sources.list
 
 
 # Install Dependencies
+# x11rdp install
+dpkg -i /tmp/x11rdp/x11rdp_0.9.0+master-1_amd64.deb
+# xrdp needs to be installed seperately
+dpkg -i /tmp/x11rdp/xrdp_0.9.0+master-1_amd64.deb
 apt-get update -qq
-apt-get install -qy --force-yes --no-install-recommends libossp-uuid-dev \
+apt-get install -qy --force-yes --no-install-recommends openjdk-7-jre \
+                                                        wget \
+                                                        openbox \
+                                                        unzip \
+							libossp-uuid-dev \
 							libpng12-dev \
 							libfreerdp-dev \
 							libvorbis-dev \
@@ -31,12 +48,148 @@ apt-get install -qy --force-yes --no-install-recommends libossp-uuid-dev \
 ##  FILES, SERVICES AND CONFIGURATION  ##
 #########################################
 
+# User directory
+mkdir /nobody
+mkdir -p /nobody/.config/openbox
+mkdir /nobody/.cache
+
+# config
+cat <<'EOT' > /etc/my_init.d/00_config.sh
+#!/bin/bash
+if [[ $(cat /etc/timezone) != $TZ ]] ; then
+  echo "$TZ" > /etc/timezone
+  dpkg-reconfigure -f noninteractive tzdata
+fi
+EOT
+
+# X11rdp
+mkdir -p /etc/service/X11rdp
+cat <<'EOT' > /etc/service/X11rdp/run
+#!/bin/bash
+exec 2>&1
+
+exec /sbin/setuser nobody X11rdp :10 -bs -ac -nolisten tcp -geometry 1280x960 -depth 16 -uds
+EOT
+
+# xrdp
+mkdir -p /etc/service/xrdp
+cat <<'EOT' > /etc/service/xrdp/run
+#!/bin/bash
+exec 2>&1
+RSAKEYS=/etc/xrdp/rsakeys.ini
+
+    # Check for rsa key
+    if [ ! -f $RSAKEYS ] || cmp $RSAKEYS /usr/share/doc/xrdp/rsakeys.ini > /dev/null; then
+        echo "Generating xrdp RSA keys..."
+        (umask 077 ; xrdp-keygen xrdp $RSAKEYS)
+        chown root:root $RSAKEYS
+        if [ ! -f $RSAKEYS ] ; then
+            echo "could not create $RSAKEYS"
+            exit 1
+        fi
+        echo "done"
+    fi
+
+exec /usr/sbin/xrdp --nodaemon
+EOT
+
+# xrdp.ini
+cat <<'EOT' > /etc/xrdp/xrdp.ini
+[globals]
+itmap_cache=yes
+bitmap_compression=yes
+port=3389
+max_bpp=16
+fork=yes
+crypt_level=low
+security_layer=rdp
+tcp_nodelay=yes
+tcp_keepalive=yes
+blue=009cb5
+grey=dedede
+autorun=xrdp1
+bulk_compression=yes
+new_cursors=yes
+use_fastpath=both
+
+[Logging]
+LogFile=xrdp.log
+LogLevel=DEBUG
+EnableSyslog=1
+SyslogLevel=DEBUG
+
+[xrdp1]
+name=sesman-X11rdp
+lib=libxup.so
+username=na
+password=na
+ip=127.0.0.1
+port=/tmp/.xrdp/xrdp_display_10
+xserverbpp=16
+code=10
+EOT
+
+# xrdp-sesman
+mkdir -p /etc/service/xrdp-sesman
+cat <<'EOT' > /etc/service/xrdp-sesman/run
+#!/bin/bash
+exec 2>&1
+
+exec /usr/sbin/xrdp-sesman --nodaemon >> /var/log/xrdp-sesman_run.log 2>&1
+EOT
+
+# sesman.ini
+cat <<'EOT' /etc/xrdp/sesman.ini
+[Globals]
+ListenAddress=127.0.0.1
+ListenPort=3350
+EnableUserWindowManager=1
+UserWindowManager=startwm.sh
+DefaultWindowManager=startwm.sh
+
+[Security]
+AllowRootLogin=1
+MaxLoginRetry=4
+TerminalServerUsers=tsusers
+TerminalServerAdmins=tsadmins
+# When AlwaysGroupCheck = false access will be permitted
+# if the group TerminalServerUsers is not defined.
+AlwaysGroupCheck = false
+
+[Sessions]
+X11DisplayOffset=10
+MaxSessions=2
+KillDisconnected=0
+IdleTimeLimit=0
+DisconnectedTimeLimit=0
+Policy=Default
+
+[Logging]
+LogFile=xrdp-sesman.log
+LogLevel=DEBUG
+EnableSyslog=1
+SyslogLevel=DEBUG
+
+[X11rdp]
+param1=-bs
+param2=-ac
+param3=-nolisten
+param4=tcp
+param5=-uds
+EOT
+
+# openbox
+mkdir -p /etc/service/openbox
+cat <<'EOT' > /etc/service/openbox/run
+#!/bin/bash
+exec 2>&1
+exec env DISPLAY=:10 HOME=/nobody /sbin/setuser nobody  /usr/bin/openbox-session
+EOT
+
 mkdir -p /etc/service/tomcat7
 cat <<'EOT' > /etc/service/tomcat7/run
 #!/bin/bash
 exec 2>&1
-
-
 
 touch /var/lib/tomcat7/logs/catalina.out
 
@@ -114,12 +267,16 @@ ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7-root/.guacamole/
 ln -s /etc/guacamole/guacamole.properties /root/.guacamole/
 
 # Fix tomcat webroot
-rm -RF /var/lib/tomcat7/webapps/ROOT
+rm -Rf /var/lib/tomcat7/webapps/ROOT
 ln -s /var/lib/tomcat7/webapps/guacamole.war /var/lib/tomcat7/webapps/ROOT.war 
 
 ### Compensate for GUAC-513
 ln -s /usr/local/lib/freerdp/guacsnd.so /usr/lib/x86_64-linux-gnu/freerdp/ 
 ln -s /usr/local/lib/freerdp/guacdr.so /usr/lib/x86_64-linux-gnu/freerdp/
+
+# openbox confg
+cp /tmp/openbox/rc.xml /nobody/.config/openbox/rc.xml
+chown nobody:users /nobody/.config/openbox/rc.xml
 
 #########################################
 ##                 CLEANUP             ##

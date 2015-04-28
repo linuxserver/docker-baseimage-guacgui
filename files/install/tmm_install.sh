@@ -41,3 +41,13 @@ chmod -R +x /etc/service/ /etc/my_init.d/
 # Install tinyMediaManager
 mv /tmp/tmmConfig /tmmConfig
 mv /tmp/tinyMediaManager /
+
+#########################################
+##                 CLEANUP             ##
+#########################################
+
+# Clean APT install files
+apt-get autoremove -y
+apt-get clean -y
+rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp
+

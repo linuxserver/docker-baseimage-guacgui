@@ -7,7 +7,7 @@ Due to the fact that it is written in Java, tinyMediaManager will run on Windows
   
  
 This Docker image makes it possible to use  "tinyMediaManager" on a headless server through a modern web browser such as chrome.
-Additionally xrdp is installed and the container can be accessed using any rdp client.
+Additionally xrdp is installed and the container can be accessed using any rdp client. You can access the web interface by going to port 8080.
   
 ![Alt text](http://i.imgur.com/SnolAAr.jpg "")
   
@@ -16,7 +16,7 @@ Additionally xrdp is installed and the container can be accessed using any rdp c
 ### start a tinyMediaManager instance:
   
 ```
-docker run -d -p 6080:6080 -p 3389:3389 -v /*tmm_config_location*:/config -v /*your_media_location*:/mnt -e TZ=America/Edmonton --name=tmm hurricane/tinyMediaManager
+docker run -d -p 8080:8080 -p 3389:3389 -v /*tmm_config_location*:/config -v /*your_media_location*:/mnt -e TZ=America/Edmonton --name=tmm hurricane/tinyMediaManager
 ```
 
 ## Volumes:

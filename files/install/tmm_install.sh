@@ -49,5 +49,5 @@ mv /tmp/tinyMediaManager /
 # Clean APT install files
 apt-get autoremove -y
 apt-get clean -y
-rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp
+rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp/guac/ /tmp/x11rdp
 

@@ -23,15 +23,13 @@ rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 # Repositories
 echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main universe restricted' > /etc/apt/sources.list
 echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main universe restricted' >> /etc/apt/sources.list
-
+add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
 
 # Install Dependencies
-# x11rdp install
-dpkg -i /tmp/x11rdp/x11rdp_0.9.0+master-1_amd64.deb
-# xrdp needs to be installed seperately
-dpkg -i /tmp/x11rdp/xrdp_0.9.0+master-1_amd64.deb
 apt-get update -qq
 apt-get install -qy --force-yes --no-install-recommends openjdk-7-jre \
+							vnc4server \
+							libxfont1 \
                                                         wget \
                                                         openbox \
                                                         unzip \
@@ -43,6 +41,8 @@ apt-get install -qy --force-yes --no-install-recommends openjdk-7-jre \
 							libcairo2-dev \
 							tomcat7
 
+# xrdp needs to be installed seperately
+dpkg -i /tmp/x11rdp/xrdp_0.9.0+master-1_amd64.deb
 
 #########################################
 ##  FILES, SERVICES AND CONFIGURATION  ##
@@ -62,13 +62,13 @@ if [[ $(cat /etc/timezone) != $TZ ]] ; then
 fi
 EOT
 
-# X11rdp
-mkdir -p /etc/service/X11rdp
-cat <<'EOT' > /etc/service/X11rdp/run
+# Xvnc
+#mkdir -p /etc/service/Xvnc
+cat <<'EOT' > /etc/service/Xvnc/run
 #!/bin/bash
 exec 2>&1
 
-exec /sbin/setuser nobody X11rdp :10 -bs -ac -nolisten tcp -geometry 1280x960 -depth 16 -uds
+exec /sbin/setuser nobody vncserver :0 -geometry 1280x720 -nolisten tcp -localhost -depth 16 -dpi 96
 EOT
 
 # xrdp
@@ -94,40 +94,40 @@ exec /usr/sbin/xrdp --nodaemon
 EOT
 
 # xrdp.ini
-cat <<'EOT' > /etc/xrdp/xrdp.ini
-[globals]
-itmap_cache=yes
-bitmap_compression=yes
-port=3389
-max_bpp=16
-fork=yes
-crypt_level=low
-security_layer=rdp
-tcp_nodelay=yes
-tcp_keepalive=yes
-blue=009cb5
-grey=dedede
-autorun=xrdp1
-bulk_compression=yes
-new_cursors=yes
-use_fastpath=both
+#cat <<'EOT' > /etc/xrdp/xrdp.ini
+#[globals]
+#bitmap_cache=yes
+#bitmap_compression=yes
+#port=3389
+#max_bpp=16
+#fork=yes
+#crypt_level=low
+#security_layer=rdp
+#tcp_nodelay=yes
+#tcp_keepalive=yes
+#blue=009cb5
+#grey=dedede
+#autorun=xrdp1
+#bulk_compression=yes
+#new_cursors=yes
+#use_fastpath=both
 
-[Logging]
-LogFile=xrdp.log
-LogLevel=DEBUG
-EnableSyslog=1
-SyslogLevel=DEBUG
+#[Logging]
+#LogFile=xrdp.log
+#LogLevel=DEBUG
+#EnableSyslog=1
+#SyslogLevel=DEBUG
 
-[xrdp1]
-name=tinyMediaManaer
-lib=libxup.so
-username=na
-password=na
-ip=127.0.0.1
-port=/tmp/.xrdp/xrdp_display_10
-xserverbpp=16
-code=10
-EOT
+#[xrdp1]
+#name=tinyMediaManaer
+#lib=libvnc.so
+#username=na
+#password=na
+#ip=127.0.0.1
+#port=5900
+#xserverbpp=16
+#code=10
+#EOT
 
 # xrdp-sesman
 mkdir -p /etc/service/xrdp-sesman
@@ -139,51 +139,52 @@ exec /usr/sbin/xrdp-sesman --nodaemon >> /var/log/xrdp-sesman_run.log 2>&1
 EOT
 
 # sesman.ini
-cat <<'EOT' /etc/xrdp/sesman.ini
-[Globals]
-ListenAddress=127.0.0.1
-ListenPort=3350
-EnableUserWindowManager=1
-UserWindowManager=startwm.sh
-DefaultWindowManager=startwm.sh
+#cat <<'EOT' /etc/xrdp/sesman.ini
+#[Globals]
+#ListenAddress=127.0.0.1
+#ListenPort=3350
+#EnableUserWindowManager=1
+#UserWindowManager=startwm.sh
+#DefaultWindowManager=startwm.sh
 
-[Security]
-AllowRootLogin=1
-MaxLoginRetry=4
-TerminalServerUsers=tsusers
-TerminalServerAdmins=tsadmins
+#[Security]
+#AllowRootLogin=1
+#MaxLoginRetry=4
+#TerminalServerUsers=tsusers
+#TerminalServerAdmins=tsadmins
 # When AlwaysGroupCheck = false access will be permitted
 # if the group TerminalServerUsers is not defined.
-AlwaysGroupCheck = false
+#AlwaysGroupCheck = false
 
-[Sessions]
-X11DisplayOffset=10
-MaxSessions=2
-KillDisconnected=0
-IdleTimeLimit=0
-DisconnectedTimeLimit=0
-Policy=Default
+#[Sessions]
+#MaxSessions=2
+#KillDisconnected=0
+#IdleTimeLimit=0
+#DisconnectedTimeLimit=0
+#Policy=Default
 
-[Logging]
-LogFile=xrdp-sesman.log
-LogLevel=DEBUG
-EnableSyslog=1
-SyslogLevel=DEBUG
+#[Logging]
+#LogFile=xrdp-sesman.log
+#LogLevel=DEBUG
+#EnableSyslog=1
+#SyslogLevel=DEBUG
 
-[X11rdp]
-param1=-bs
-param2=-ac
-param3=-nolisten
-param4=tcp
-param5=-uds
-EOT
+#[Xvnc]
+#param1=-bs
+#param2=-ac
+#param3=-nolisten
+#param4=tcp
+#param5=-localhost
+#param6=-dpi
+#param7=96
+#EOT
 
 # openbox
-mkdir -p /etc/service/openbox
+#mkdir -p /etc/service/openbox
 cat <<'EOT' > /etc/service/openbox/run
 #!/bin/bash
 exec 2>&1
-exec env DISPLAY=:10 HOME=/nobody /sbin/setuser nobody  /usr/bin/openbox-session
+exec env DISPLAY=:0 HOME=/nobody /sbin/setuser nobody  /usr/bin/openbox-session
 EOT
 
 mkdir -p /etc/service/tomcat7
@@ -285,4 +286,4 @@ chown nobody:users /nobody/.config/openbox/rc.xml
 # Clean APT install files
 apt-get autoremove -y 
 apt-get clean -y
-rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/*
+rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp/guacamole /tmp/openbox

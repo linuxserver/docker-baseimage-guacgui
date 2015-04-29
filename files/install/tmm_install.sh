@@ -8,6 +8,10 @@
 cat <<'EOT' > /nobody/.config/openbox/autostart
 # Programs that will run after Openbox has started
 
+ps -ewf | grep tinyMediaManager | grep -v "grep" | awk '{print $2}'| xargs kill
+
+xsetroot -solid black -cursor_name left_ptr
+
 cd /tinyMediaManager
 java -Djava.net.preferIPv4Stack=true -jar getdown.jar .
 EOT

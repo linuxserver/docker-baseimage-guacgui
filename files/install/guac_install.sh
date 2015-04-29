@@ -27,22 +27,31 @@ add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
 
 # Install Dependencies
 apt-get update -qq
-apt-get install -qy --force-yes --no-install-recommends openjdk-7-jre \
-							vnc4server \
-							libxfont1 \
-                                                        wget \
-                                                        openbox \
-                                                        unzip \
-							libossp-uuid-dev \
-							libpng12-dev \
-							libfreerdp-dev \
-							libvorbis-dev \
-							libssl-dev \
-							libcairo2-dev \
-							tomcat7
+# Install general
+apt-get install -qy --force-yes --no-install-recommends wget \
+							unzip
 
-# xrdp needs to be installed seperately
-dpkg -i /tmp/x11rdp/xrdp_0.9.0+master-1_amd64.deb
+# Install window manager and x-server
+apt-get install -qy --force-yes --no-install-recommends vnc4server \
+							x11-xserver-utils \
+                                                        openbox \
+							xfonts-base \
+							xfonts-100dpi \
+							xfonts-75dpi \
+							libfuse2
+
+# Install xrdp
+apt-get install -qy --force-yes --no-install-recommends xrdp
+
+
+# Install Guac
+apt-get install -qy --force-yes --no-install-recommends openjdk-7-jre \
+							libossp-uuid-dev \
+                                                        libpng12-dev \
+                                                        libfreerdp-dev \
+                                                        libcairo2-dev \
+                                                        tomcat7
+
 
 #########################################
 ##  FILES, SERVICES AND CONFIGURATION  ##
@@ -63,12 +72,14 @@ fi
 EOT
 
 # Xvnc
-#mkdir -p /etc/service/Xvnc
+mkdir -p /etc/service/Xvnc
 cat <<'EOT' > /etc/service/Xvnc/run
 #!/bin/bash
 exec 2>&1
 
-exec /sbin/setuser nobody vncserver :0 -geometry 1280x720 -nolisten tcp -localhost -depth 16 -dpi 96
+exec /sbin/setuser nobody Xvnc4 :1 -geometry 1280x800 -depth 16 -rfbwait 30000 -SecurityTypes None -rfbport 5901 -bs -ac \
+				   -pn -fp /usr/share/fonts/X11/misc/,/usr/share/fonts/X11/75dpi/,/usr/share/fonts/X11/100dpi/ \
+				   -co /etc/X11/rgb -dpi 96
 EOT
 
 # xrdp
@@ -94,40 +105,33 @@ exec /usr/sbin/xrdp --nodaemon
 EOT
 
 # xrdp.ini
-#cat <<'EOT' > /etc/xrdp/xrdp.ini
-#[globals]
-#bitmap_cache=yes
-#bitmap_compression=yes
-#port=3389
-#max_bpp=16
-#fork=yes
-#crypt_level=low
-#security_layer=rdp
-#tcp_nodelay=yes
-#tcp_keepalive=yes
-#blue=009cb5
-#grey=dedede
-#autorun=xrdp1
-#bulk_compression=yes
-#new_cursors=yes
-#use_fastpath=both
+cat <<'EOT' > /etc/xrdp/xrdp.ini
+[globals]
+bitmap_cache=yes
+bitmap_compression=yes
+port=3389
+max_bpp=16
+fork=yes
+crypt_level=low
+security_layer=rdp
+tcp_nodelay=yes
+tcp_keepalive=yes
+blue=009cb5
+grey=dedede
+autorun=xrdp1
+bulk_compression=yes
+new_cursors=yes
+use_fastpath=both
+hidelogwindow=yes
 
-#[Logging]
-#LogFile=xrdp.log
-#LogLevel=DEBUG
-#EnableSyslog=1
-#SyslogLevel=DEBUG
-
-#[xrdp1]
-#name=tinyMediaManaer
-#lib=libvnc.so
-#username=na
-#password=na
-#ip=127.0.0.1
-#port=5900
-#xserverbpp=16
-#code=10
-#EOT
+[xrdp1]
+name=tinyMediaManager
+lib=libvnc.so
+username=nobody
+password=PASSWD
+ip=127.0.0.1
+port=5901
+EOT
 
 # xrdp-sesman
 mkdir -p /etc/service/xrdp-sesman
@@ -139,53 +143,55 @@ exec /usr/sbin/xrdp-sesman --nodaemon >> /var/log/xrdp-sesman_run.log 2>&1
 EOT
 
 # sesman.ini
-#cat <<'EOT' /etc/xrdp/sesman.ini
-#[Globals]
-#ListenAddress=127.0.0.1
-#ListenPort=3350
-#EnableUserWindowManager=1
-#UserWindowManager=startwm.sh
-#DefaultWindowManager=startwm.sh
+cat <<'EOT' > /etc/xrdp/sesman.ini
+[Globals]
+ListenAddress=127.0.0.1
+ListenPort=3350
+EnableUserWindowManager=1
+UserWindowManager=startwm.sh
+DefaultWindowManager=startwm.sh
 
-#[Security]
-#AllowRootLogin=1
-#MaxLoginRetry=4
-#TerminalServerUsers=tsusers
-#TerminalServerAdmins=tsadmins
-# When AlwaysGroupCheck = false access will be permitted
-# if the group TerminalServerUsers is not defined.
-#AlwaysGroupCheck = false
+[Security]
+AllowRootLogin=1
+MaxLoginRetry=4
+TerminalServerUsers=tsusers
+TerminalServerAdmins=tsadmins
+AlwaysGroupCheck = false
 
-#[Sessions]
-#MaxSessions=2
-#KillDisconnected=0
-#IdleTimeLimit=0
-#DisconnectedTimeLimit=0
-#Policy=Default
+[Sessions]
+X11DisplayOffset=10
+MaxSessions=1
+KillDisconnected=0
+IdleTimeLimit=0
+DisconnectedTimeLimit=0
+Policy=Default
 
-#[Logging]
-#LogFile=xrdp-sesman.log
-#LogLevel=DEBUG
-#EnableSyslog=1
-#SyslogLevel=DEBUG
+[Logging]
+LogFile=xrdp-sesman.log
+LogLevel=DEBUG
+EnableSyslog=1
+SyslogLevel=DEBUG
 
-#[Xvnc]
-#param1=-bs
-#param2=-ac
-#param3=-nolisten
-#param4=tcp
-#param5=-localhost
-#param6=-dpi
-#param7=96
-#EOT
+[Xvnc]
+param1=-bs
+param2=-ac
+param5=-localhost
+param6=-dpi
+param7=96
+EOT
+
 
 # openbox
-#mkdir -p /etc/service/openbox
+mkdir -p /etc/service/openbox
 cat <<'EOT' > /etc/service/openbox/run
 #!/bin/bash
 exec 2>&1
-exec env DISPLAY=:0 HOME=/nobody /sbin/setuser nobody  /usr/bin/openbox-session
+
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody  /usr/bin/openbox-session
 EOT
+
+
+
 
 mkdir -p /etc/service/tomcat7
 cat <<'EOT' > /etc/service/tomcat7/run
@@ -239,11 +245,12 @@ cat <<'EOT' > /etc/guacamole/noauth-config.xml
     <config name="tinyMediaManager" protocol="rdp">
         <param name="hostname" value="127.0.0.1" />
         <param name="port" value="3389" />
+        <param name="color-depth" value="16" />
     </config>
 </configs>
 EOT
 
-chmod -R +x /etc/service/ /etc/my_init.d/
+chmod -R +x /etc/service/ /etc/my_init.d/ /etc/xrdp/startwm.sh
 
 #########################################
 ##             INSTALLATION            ##

@@ -7,7 +7,6 @@ dockergui is a base image based of phusion's base image version 0.9.16 with ssh 
 This Docker image makes it possible to use any X application  on a headless server through a modern web browser such as chrome.
 Additionally xrdp is installed and the container can be accessed using any rdp client. You can access the web interface by going to port 8080 or rdp via port 3389.
   
-![Alt text](http://i.imgur.com/SnolAAr.jpg "")
   
 ## How to use this image:
   

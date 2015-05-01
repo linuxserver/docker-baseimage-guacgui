@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t tmm --rm=true .
+docker build -t dockergui --rm=true .

@@ -32,17 +32,24 @@ apt-get install -qy --force-yes --no-install-recommends wget \
 							unzip
 
 # Install window manager and x-server
-apt-get install -qy --force-yes --no-install-recommends vnc4server \
-							x11-xserver-utils \
+apt-get install -qy --force-yes --no-install-recommends x11-xserver-utils \
+							libxrandr2 \
+							libfuse2 \
+							xutils \
+							libxfixes3 \
+							libx11-dev \
+							libxml2 \
+							zlib1g \	
                                                         openbox \
 							xfonts-base \
 							xfonts-100dpi \
 							xfonts-75dpi \
 							libfuse2
+# x11rdp install
+dpkg -i /tmp/x11rdp/x11rdp_0.7.0-1_amd64.deb
 
-# Install xrdp
-apt-get install -qy --force-yes --no-install-recommends xrdp
-
+# xrdp needs to be installed seperately
+dpkg -i /tmp/x11rdp/xrdp_0.7.0-1_amd64.deb
 
 # Install Guac
 apt-get install -qy --force-yes --no-install-recommends openjdk-7-jre \
@@ -99,21 +106,15 @@ if [[ -e /startapp.sh ]]; then
 fi
 EOT
 
-
 # Xvnc
-
-
-# Xvnc
-mkdir -p /etc/service/Xvnc
-cat <<'EOT' > /etc/service/Xvnc/run
+mkdir -p /etc/service/X11rdp
+cat <<'EOT' > /etc/service/X11rdp/run
 #!/bin/bash
 exec 2>&1
 WD=${WIDTH:-1280}
 HT=${HEIGHT:-720}
 
-exec /sbin/setuser nobody Xvnc4 :1 -geometry $WDx$HT -depth 16 -rfbwait 30000 -SecurityTypes None -rfbport 5901 -bs -ac \
-				   -pn -fp /usr/share/fonts/X11/misc/,/usr/share/fonts/X11/75dpi/,/usr/share/fonts/X11/100dpi/ \
-				   -co /etc/X11/rgb -dpi 96
+exec /sbin/setuser nobody X11rdp :1 -bs -ac -nolisten tcp -geometry ${WD}x${HT} -depth 16 -uds
 EOT
 
 # xrdp
@@ -160,11 +161,13 @@ hidelogwindow=yes
 
 [xrdp1]
 name=GUI_APPLICATION
-lib=libvnc.so
-username=nobody
-password=PASSWD
+lib=libxup.so
+username=na
+password=na
 ip=127.0.0.1
-port=5901
+port=/tmp/.xrdp/xrdp_display_1
+xserverbpp=16
+code=10
 EOT
 
 # xrdp-sesman
@@ -206,12 +209,13 @@ LogLevel=DEBUG
 EnableSyslog=1
 SyslogLevel=DEBUG
 
-[Xvnc]
+
+[X11rdp]
 param1=-bs
 param2=-ac
-param5=-localhost
-param6=-dpi
-param7=96
+param3=-nolisten
+param4=tcp
+param5=-uds
 EOT
 
 
@@ -339,4 +343,4 @@ chown nobody:users /nobody/.config/openbox/rc.xml
 # Clean APT install files
 apt-get autoremove -y 
 apt-get clean -y
-rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp/guacamole /tmp/openbox
+rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp/guacamole /tmp/openbox /tmp/X11rdp

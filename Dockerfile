@@ -1,4 +1,4 @@
-# tinyMediaManager 
+# dockergui
 FROM phusion/baseimage:0.9.16
 MAINTAINER Carlos Hernandez <carlos@techbyte.ca>
 
@@ -16,11 +16,5 @@ CMD ["/sbin/my_init"]
 ##         RUN INSTALL SCRIPT          ##
 #########################################
 COPY ./files/ /tmp/
-RUN chmod +x /tmp/install/guac_install.sh && /tmp/install/guac_install.sh
-RUN chmod +x /tmp/install/tmm_install.sh && /tmp/install/tmm_install.sh
-
-#########################################
-##         EXPORTS AND VOLUMES         ##
-#########################################
-VOLUME ["/config"]
-EXPOSE 3389
+RUN chmod +x /tmp/install/install.sh && /tmp/install/install.sh
+RUN rm /tmp/install.sh

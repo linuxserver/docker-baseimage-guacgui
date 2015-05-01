@@ -27,11 +27,11 @@ ENV USER_ID=99
 ENV GROUP_ID=100
 
 # Gui App Name default is "GUI_APPLICATION"
-APP_NAME="GUI_APPLICATION"
+ENV APP_NAME="GUI_APPLICATION"
 
 # Default resolution, change if you like
-WIDTH=1280
-HEIGHT=720
+ENV WIDTH=1280
+ENV HEIGHT=720
 
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]

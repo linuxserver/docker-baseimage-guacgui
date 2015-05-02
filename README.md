@@ -4,7 +4,9 @@
 dockergui is a base image based of phusion's base image version 0.9.16 with ssh disabled.
   
  
-This Docker image makes it possible to use any X application  on a headless server through a modern web browser such as chrome.
+This Docker image makes it possible to use any X application  on a headless server through a modern web browser such as chrome. The x11rdp branch using X11rdp to 
+run its virtual X server, while the Xvnc using ofcourse Xvnc for it's virtual X server. The x11rdp branch is experimental and sometimes has drawing issues. Both branches
+use rdp for communication between the container and the client.
 Additionally xrdp is installed and the container can be accessed using any rdp client. You can access the web interface by going to port 8080 or rdp via port 3389.
   
   
@@ -27,7 +29,7 @@ ENV USER_ID=99
 ENV GROUP_ID=100
 
 # Gui App Name default is "GUI_APPLICATION"
-ENV APP_NAME="GUI_APPLICATION"
+ENV APP_NAME GUI_APPLICATION
 
 # Default resolution, change if you like
 ENV WIDTH=1280

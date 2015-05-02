@@ -44,7 +44,8 @@ apt-get install -qy --force-yes --no-install-recommends x11-xserver-utils \
 							xfonts-base \
 							xfonts-100dpi \
 							xfonts-75dpi \
-							libfuse2
+							libxfont1 \
+							xfonts-scalable
 # x11rdp install
 dpkg -i /tmp/x11rdp/x11rdp_0.7.0-1_amd64.deb
 

@@ -39,7 +39,7 @@ apt-get install -qy --force-yes --no-install-recommends x11-xserver-utils \
 							libxfixes3 \
 							libx11-dev \
 							libxml2 \
-							zlib1g \	
+							zlib1g \
                                                         openbox \
 							xfonts-base \
 							xfonts-100dpi \
@@ -293,7 +293,7 @@ cat <<'EOT' > /nobody/.config/openbox/autostart
 # Programs that will run after Openbox has started
 
 xsetroot -solid black -cursor_name left_ptr
-if [[ -e /startapp.sh ]]; then 
+if [ -e /startapp.sh ]; then 
 	echo "Starting X app..."
  	exec /startapp.sh
 fi
@@ -343,4 +343,4 @@ chown nobody:users /nobody/.config/openbox/rc.xml
 # Clean APT install files
 apt-get autoremove -y 
 apt-get clean -y
-rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp/guacamole /tmp/openbox /tmp/X11rdp
+rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp/guacamole /tmp/openbox /tmp/x11rdp

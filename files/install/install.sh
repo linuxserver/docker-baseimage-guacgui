@@ -111,7 +111,7 @@ exec 2>&1
 WD=${WIDTH:-1280}
 HT=${HEIGHT:-720}
 
-exec /sbin/setuser nobody Xvnc4 :1 -geometry $WDx$HT -depth 16 -rfbwait 30000 -SecurityTypes None -rfbport 5901 -bs -ac \
+exec /sbin/setuser nobody Xvnc4 :1 -geometry ${WD}x${HT} -depth 16 -rfbwait 30000 -SecurityTypes None -rfbport 5901 -bs -ac \
 				   -pn -fp /usr/share/fonts/X11/misc/,/usr/share/fonts/X11/75dpi/,/usr/share/fonts/X11/100dpi/ \
 				   -co /etc/X11/rgb -dpi 96
 EOT
@@ -289,7 +289,7 @@ cat <<'EOT' > /nobody/.config/openbox/autostart
 # Programs that will run after Openbox has started
 
 xsetroot -solid black -cursor_name left_ptr
-if [[ -e /startapp.sh ]]; then 
+if [ -e /startapp.sh ]; then 
 	echo "Starting X app..."
  	exec /startapp.sh
 fi

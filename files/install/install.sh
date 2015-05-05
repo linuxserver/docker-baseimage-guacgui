@@ -40,17 +40,12 @@ apt-get install -qy --force-yes --no-install-recommends x11-xserver-utils \
 							libx11-dev \
 							libxml2 \
 							zlib1g \
-                                                        openbox \
-							xfonts-base \
-							xfonts-100dpi \
-							xfonts-75dpi \
-							libxfont1 \
-							xfonts-scalable
+                                                        openbox
 # x11rdp install
-dpkg -i /tmp/x11rdp/x11rdp_0.7.0-1_amd64.deb
+dpkg -i /tmp/x11rdp/x11rdp_0.9.0+devel-1_amd64.deb
 
 # xrdp needs to be installed seperately
-dpkg -i /tmp/x11rdp/xrdp_0.7.0-1_amd64.deb
+dpkg -i /tmp/x11rdp/xrdp_0.9.0+devel-1_amd64.deb
 
 # Install Guac
 apt-get install -qy --force-yes --no-install-recommends openjdk-7-jre \
@@ -146,6 +141,7 @@ cat <<'EOT' > /etc/xrdp/xrdp.ini
 bitmap_cache=yes
 bitmap_compression=yes
 port=3389
+allow_channels=true
 max_bpp=16
 fork=yes
 crypt_level=low
@@ -160,6 +156,19 @@ new_cursors=yes
 use_fastpath=both
 hidelogwindow=yes
 
+[Logging]
+LogFile=xrdp-ng.log
+LogLevel=DEBUG
+EnableSyslog=1
+SyslogLevel=DEBUG
+
+[channels]
+rdpdr=true
+rdpsnd=true
+drdynvc=true
+cliprdr=true
+rail=true
+
 [xrdp1]
 name=GUI_APPLICATION
 lib=libxup.so
@@ -169,6 +178,7 @@ ip=127.0.0.1
 port=/tmp/.xrdp/xrdp_display_1
 xserverbpp=16
 code=10
+
 EOT
 
 # xrdp-sesman
@@ -228,9 +238,6 @@ exec 2>&1
 
 exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody  /usr/bin/openbox-session
 EOT
-
-
-
 
 mkdir -p /etc/service/tomcat7
 cat <<'EOT' > /etc/service/tomcat7/run
@@ -300,7 +307,6 @@ if [ -e /startapp.sh ]; then
 fi
 EOT
 
-
 chmod -R +x /etc/service/ /etc/my_init.d/ 
 
 #########################################
@@ -336,6 +342,10 @@ ln -s /usr/local/lib/freerdp/guacdr.so /usr/lib/x86_64-linux-gnu/freerdp/
 # openbox confg
 cp /tmp/openbox/rc.xml /nobody/.config/openbox/rc.xml
 chown nobody:users /nobody/.config/openbox/rc.xml
+
+# pulseauido rdp
+cp /tmp/x11rdp/module-xrdp-sink.so /usr/lib/pulse-4.0/modules
+chown -R 777 /usr/lib/pulse-4.0/modules
 
 #########################################
 ##                 CLEANUP             ##

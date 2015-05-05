@@ -159,13 +159,6 @@ new_cursors=yes
 use_fastpath=both
 hidelogwindow=yes
 
-[channels]
-rdpdr=true
-rdpsnd=true
-drdynvc=true
-cliprdr=true
-rail=true
-
 [xrdp1]
 name=GUI_APPLICATION
 lib=libvnc.so
@@ -173,6 +166,13 @@ username=nobody
 password=PASSWD
 ip=127.0.0.1
 port=5901
+
+[channels]
+rdpdr=true
+rdpsnd=true
+drdynvc=true
+cliprdr=true
+rail=true
 EOT
 
 # xrdp-sesman

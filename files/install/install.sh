@@ -144,6 +144,7 @@ cat <<'EOT' > /etc/xrdp/xrdp.ini
 bitmap_cache=yes
 bitmap_compression=yes
 port=3389
+allow_channels=true
 max_bpp=16
 fork=yes
 crypt_level=low
@@ -157,6 +158,13 @@ bulk_compression=yes
 new_cursors=yes
 use_fastpath=both
 hidelogwindow=yes
+
+[channels]
+rdpdr=true
+rdpsnd=true
+drdynvc=true
+cliprdr=true
+rail=true
 
 [xrdp1]
 name=GUI_APPLICATION

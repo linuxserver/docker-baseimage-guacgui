@@ -42,6 +42,7 @@ apt-get install -qy --force-yes --no-install-recommends x11-xserver-utils \
 							zlib1g \
                                                         fuse \
                                                         autocutsel \
+                                                        pulseaudio \
                                                         openbox
 # x11rdp install
 dpkg -i /tmp/x11rdp/x11rdp_0.9.0+devel-1_amd64.deb
@@ -202,6 +203,33 @@ cat <<'EOT' > /etc/service/autocutsel/run
 exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel
 EOT
 
+# asound.conf
+cat <<'EOT' > /etc/asound.conf
+pcm.pulse {
+    type pulse
+}
+
+ctl.pulse {
+    type pulse
+}
+
+pcm.!default {
+    type pulse
+}
+
+ctl.!default {
+    type pulse
+}
+EOT
+
+# pulseaudio
+mkdir -p /etc/service/pulseaudio
+cat <<'EOT' > /etc/service/pulseaudio/run
+#!/bin/bash
+
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody pulseaudio -F /etc/xrdp/pulse/default.pa -n
+EOT
+
 # openbox
 mkdir -p /etc/service/openbox
 cat <<'EOT' > /etc/service/openbox/run
@@ -227,8 +255,6 @@ exec /usr/lib/jvm/java-7-openjdk-amd64/bin/java -Djava.util.logging.config.file=
                                            -classpath /usr/share/tomcat7/bin/bootstrap.jar:/usr/share/tomcat7/bin/tomcat-juli.jar \
                                            -Dcatalina.base=/var/lib/tomcat7 -Dcatalina.home=/usr/share/tomcat7 \
                                            -Djava.io.tmpdir=/tmp/tomcat7-tomcat7-tmp org.apache.catalina.startup.Bootstrap start
-
-
 EOT
 
 mkdir -p /etc/service/guacd
@@ -236,9 +262,7 @@ cat <<'EOT' > /etc/service/guacd/run
 #!/bin/bash
 exec 2>&1
 
-
 exec /usr/local/sbin/guacd -f
-
 EOT
 
 mkdir -p /etc/guacamole
@@ -316,8 +340,8 @@ cp /tmp/openbox/rc.xml /nobody/.config/openbox/rc.xml
 chown nobody:users /nobody/.config/openbox/rc.xml
 
 # pulseauido rdp
-#cp /tmp/x11rdp/module-xrdp-sink.so /usr/lib/pulse-4.0/modules
-#chown -R 777 /usr/lib/pulse-4.0/modules
+cp /tmp/x11rdp/module-xrdp* /usr/lib/pulse-4.0/modules
+chown -R 777 /usr/lib/pulse-4.0/modules
 
 #########################################
 ##                 CLEANUP             ##

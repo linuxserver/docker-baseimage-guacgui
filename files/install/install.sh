@@ -40,6 +40,8 @@ apt-get install -qy --force-yes --no-install-recommends x11-xserver-utils \
 							libx11-dev \
 							libxml2 \
 							zlib1g \
+                                                        fuse \
+                                                        autocutsel \
                                                         openbox
 # x11rdp install
 dpkg -i /tmp/x11rdp/x11rdp_0.9.0+devel-1_amd64.deb
@@ -84,6 +86,7 @@ groupmod -g $GROUPID users
 usermod -u $USERID nobody
 usermod -g $GROUPID nobody
 usermod -d /nobody nobody
+usermod -a -G adm,sudo,fuse nobody
 chown -R nobody:users /nobody/ 
 EOT
 
@@ -102,7 +105,7 @@ if [[ -e /startapp.sh ]]; then
 fi
 EOT
 
-# Xvnc
+# X11rdp
 mkdir -p /etc/service/X11rdp
 cat <<'EOT' > /etc/service/X11rdp/run
 #!/bin/bash
@@ -134,6 +137,7 @@ RSAKEYS=/etc/xrdp/rsakeys.ini
 
 exec /usr/sbin/xrdp --nodaemon
 EOT
+
 
 # xrdp.ini
 cat <<'EOT' > /etc/xrdp/xrdp.ini
@@ -176,59 +180,27 @@ username=na
 password=na
 ip=127.0.0.1
 port=/tmp/.xrdp/xrdp_display_1
+chansrvport=/tmp/.xrdp/xrdp_chansrv_socket_1
 xserverbpp=16
 code=10
 
 EOT
 
-# xrdp-sesman
-mkdir -p /etc/service/xrdp-sesman
-cat <<'EOT' > /etc/service/xrdp-sesman/run
+# xrdp-chansrv
+mkdir -p /etc/service/xrdp-chansrv
+cat <<'EOT' > /etc/service/xrdp-chansrv/run
 #!/bin/bash
-exec 2>&1
 
-exec /usr/sbin/xrdp-sesman --nodaemon >> /var/log/xrdp-sesman_run.log 2>&1
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody xrdp-chansrv
 EOT
 
-# sesman.ini
-cat <<'EOT' > /etc/xrdp/sesman.ini
-[Globals]
-ListenAddress=127.0.0.1
-ListenPort=3350
-EnableUserWindowManager=1
-UserWindowManager=startwm.sh
-DefaultWindowManager=startwm.sh
+# autocutsel
+mkdir -p /etc/service/autocutsel
+cat <<'EOT' > /etc/service/autocutsel/run
+#!/bin/bash
 
-[Security]
-AllowRootLogin=1
-MaxLoginRetry=4
-TerminalServerUsers=tsusers
-TerminalServerAdmins=tsadmins
-AlwaysGroupCheck = false
-
-[Sessions]
-X11DisplayOffset=10
-MaxSessions=1
-KillDisconnected=0
-IdleTimeLimit=0
-DisconnectedTimeLimit=0
-Policy=Default
-
-[Logging]
-LogFile=xrdp-sesman.log
-LogLevel=DEBUG
-EnableSyslog=1
-SyslogLevel=DEBUG
-
-
-[X11rdp]
-param1=-bs
-param2=-ac
-param3=-nolisten
-param4=tcp
-param5=-uds
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel
 EOT
-
 
 # openbox
 mkdir -p /etc/service/openbox
@@ -344,8 +316,8 @@ cp /tmp/openbox/rc.xml /nobody/.config/openbox/rc.xml
 chown nobody:users /nobody/.config/openbox/rc.xml
 
 # pulseauido rdp
-cp /tmp/x11rdp/module-xrdp-sink.so /usr/lib/pulse-4.0/modules
-chown -R 777 /usr/lib/pulse-4.0/modules
+#cp /tmp/x11rdp/module-xrdp-sink.so /usr/lib/pulse-4.0/modules
+#chown -R 777 /usr/lib/pulse-4.0/modules
 
 #########################################
 ##                 CLEANUP             ##

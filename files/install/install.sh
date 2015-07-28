@@ -23,13 +23,14 @@ rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 # Repositories
 echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main universe restricted' > /etc/apt/sources.list
 echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main universe restricted' >> /etc/apt/sources.list
-add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
+echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' >> /etc/apt/sources.list
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 
 # Install Dependencies
 apt-get update -qq
 # Install general
 apt-get install -qy --force-yes --no-install-recommends wget \
-                            unzip
+                            				unzip
 
 # Install window manager and x-server
 apt-get install -qy --force-yes --no-install-recommends x11-xserver-utils \
@@ -52,8 +53,10 @@ dpkg -i /tmp/x11rdp/x11rdp_0.9.0+devel-1_amd64.deb
 dpkg -i /tmp/x11rdp/xrdp_0.9.0+devel_amd64.deb
 
 # Install Guac
-apt-get install -qy --force-yes --no-install-recommends openjdk-7-jre \
-                                                        libossp-uuid-dev \
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+apt-get install -y --force-yes oracle-java8-installer
+apt-get install -y --force-yes oracle-java8-set-default
+apt-get install -qy --force-yes --no-install-recommends libossp-uuid-dev \
                                                         libpng12-dev \
                                                         libfreerdp-dev \
                                                         libcairo2-dev \
@@ -204,7 +207,7 @@ mkdir -p /etc/service/autocutsel
 cat <<'EOT' > /etc/service/autocutsel/run
 #!/bin/bash
 
-exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel -fork
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel
 EOT
 
 # autocutsel2
@@ -212,13 +215,14 @@ mkdir -p /etc/service/autocutsel2
 cat <<'EOT' > /etc/service/autocutsel2/run
 #!/bin/bash
 
-exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel -selection PRIMARY -fork
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel -selection PRIMARY
 EOT
 
 # xclipboard
 mkdir -p /etc/service/xclipboard
 cat <<'EOT' > /etc/service/xclipboard/run
 #!/bin/bash
+sv -w7 check openbox
 
 exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody xclipboard
 EOT
@@ -268,13 +272,13 @@ touch /var/lib/tomcat7/logs/catalina.out
 
 cd /var/lib/tomcat7
 
-exec /usr/lib/jvm/java-7-openjdk-amd64/bin/java -Djava.util.logging.config.file=/var/lib/tomcat7/conf/logging.properties \
-                                           -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
-                                           -Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC \
-                                           -Djava.endorsed.dirs=/usr/share/tomcat7/endorsed \
-                                           -classpath /usr/share/tomcat7/bin/bootstrap.jar:/usr/share/tomcat7/bin/tomcat-juli.jar \
-                                           -Dcatalina.base=/var/lib/tomcat7 -Dcatalina.home=/usr/share/tomcat7 \
-                                           -Djava.io.tmpdir=/tmp/tomcat7-tomcat7-tmp org.apache.catalina.startup.Bootstrap start
+exec java -Djava.util.logging.config.file=/var/lib/tomcat7/conf/logging.properties \
+          -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
+          -Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC \
+          -Djava.endorsed.dirs=/usr/share/tomcat7/endorsed \
+          -classpath /usr/share/tomcat7/bin/bootstrap.jar:/usr/share/tomcat7/bin/tomcat-juli.jar \
+          -Dcatalina.base=/var/lib/tomcat7 -Dcatalina.home=/usr/share/tomcat7 \
+          -Djava.io.tmpdir=/tmp/tomcat7-tomcat7-tmp org.apache.catalina.startup.Bootstrap start
 EOT
 
 mkdir -p /etc/service/guacd
@@ -337,12 +341,12 @@ mkdir -p /usr/share/tomcat7-root/.guacamole
 mkdir -p /root/.guacamole
 
 # Install guacd
-dpkg -i /tmp/guacamole/guacamole-server_0.9.6_amd64.deb
+dpkg -i /tmp/guacamole/guacamole-server_0.9.7_amd64.deb
 ldconfig
 
 # Configure tomcat
-cp /tmp/guacamole/guacamole-0.9.6.war /var/lib/tomcat7/webapps/guacamole.war
-cp /tmp/guacamole/guacamole-auth-noauth-0.9.6.jar /var/lib/guacamole/classpath
+cp /tmp/guacamole/guacamole-0.9.7.war /var/lib/tomcat7/webapps/guacamole.war
+cp /tmp/guacamole/guacamole-auth-noauth-0.9.7.jar /var/lib/guacamole/classpath
 ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7/.guacamole/
 ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7-root/.guacamole/
 ln -s /etc/guacamole/guacamole.properties /root/.guacamole/

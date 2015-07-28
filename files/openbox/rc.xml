@@ -727,15 +727,17 @@
 
   # end of the example
 -->
+  <application name="xclipboard">
+    <iconic>yes</iconic>
+    <layer>below</layer>
+    <skip_taskbar>yes</skip_taskbar>
+    <skip_pager>yes</skip_pager>
+    <width>1</width>
+    <height>1</height>
+  </application>
   <application class="*" type="normal">
     <decor>no</decor>
     <maximized>true</maximized>
-  </application>
-  <application name="xclipboard">
-    <iconify>true</iconify>
-    <layer>below</layer>
-    <skip_taskbar>yes</skp_taskbar>
-    <skip_pager>yes</skip_pager>
   </application>
 </applications>
 

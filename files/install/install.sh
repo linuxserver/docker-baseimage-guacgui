@@ -29,30 +29,31 @@ add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
 apt-get update -qq
 # Install general
 apt-get install -qy --force-yes --no-install-recommends wget \
-							unzip
+                            unzip
 
 # Install window manager and x-server
 apt-get install -qy --force-yes --no-install-recommends x11-xserver-utils \
-							libxrandr2 \
-							libfuse2 \
-							xutils \
-							libxfixes3 \
-							libx11-dev \
-							libxml2 \
-							zlib1g \
+                                                        libxrandr2 \
+                                                        libfuse2 \
+                                                        xutils \
+                                                        libxfixes3 \
+                                                        libx11-dev \
+                                                        libxml2 \
+                                                        zlib1g \
                                                         fuse \
                                                         autocutsel \
                                                         pulseaudio \
+							x11-apps \
                                                         openbox
 # x11rdp install
 dpkg -i /tmp/x11rdp/x11rdp_0.9.0+devel-1_amd64.deb
 
 # xrdp needs to be installed seperately
-dpkg -i /tmp/x11rdp/xrdp_0.9.0+devel-1_amd64.deb
+dpkg -i /tmp/x11rdp/xrdp_0.9.0+devel_amd64.deb
 
 # Install Guac
 apt-get install -qy --force-yes --no-install-recommends openjdk-7-jre \
-							libossp-uuid-dev \
+                                                        libossp-uuid-dev \
                                                         libpng12-dev \
                                                         libfreerdp-dev \
                                                         libcairo2-dev \
@@ -101,8 +102,8 @@ sed -i -e "s#GUI_APPLICATION#$APPNAME#" /etc/xrdp/xrdp.ini
 sed -i -e "s#GUI_APPLICATION#$APPNAME#" /etc/guacamole/noauth-config.xml
 
 if [[ -e /startapp.sh ]]; then 
-	chown nobody:users /startapp.sh
-	chmod +x /startapp.sh
+    chown nobody:users /startapp.sh
+    chmod +x /startapp.sh
 fi
 EOT
 
@@ -125,16 +126,19 @@ exec 2>&1
 RSAKEYS=/etc/xrdp/rsakeys.ini
 
     # Check for rsa key
-    if [ ! -f $RSAKEYS ] || cmp $RSAKEYS /usr/share/doc/xrdp/rsakeys.ini > /dev/null; then
+    [ -f /usr/share/doc/xrdp/rsakeys.ini ] && rm /usr/share/doc/xrdp/rsakeys.ini
+    ln -s $RSAKEYS /usr/share/doc/xrdp/rsakeys.ini
+    if [ ! -f $RSAKEYS ]; then
         echo "Generating xrdp RSA keys..."
         (umask 077 ; xrdp-keygen xrdp $RSAKEYS)
         chown root:root $RSAKEYS
         if [ ! -f $RSAKEYS ] ; then
-            echo "could not create $RSAKEYS"
+	        echo "could not create $RSAKEYS"
             exit 1
         fi
-        echo "done"
     fi
+    [ -f /var/run/xrdp/xrdp.pid ] && rm /var/run/xrdp/xrdp.pid
+    echo "Starting xrdp!"
 
 exec /usr/sbin/xrdp --nodaemon
 EOT
@@ -200,7 +204,23 @@ mkdir -p /etc/service/autocutsel
 cat <<'EOT' > /etc/service/autocutsel/run
 #!/bin/bash
 
-exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel -fork
+EOT
+
+# autocutsel2
+mkdir -p /etc/service/autocutsel2
+cat <<'EOT' > /etc/service/autocutsel2/run
+#!/bin/bash
+
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel -selection PRIMARY -fork
+EOT
+
+# xclipboard
+mkdir -p /etc/service/xclipboard
+cat <<'EOT' > /etc/service/xclipboard/run
+#!/bin/bash
+
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody xclipboard
 EOT
 
 # asound.conf
@@ -298,8 +318,8 @@ cat <<'EOT' > /nobody/.config/openbox/autostart
 
 xsetroot -solid black -cursor_name left_ptr
 if [ -e /startapp.sh ]; then 
-	echo "Starting X app..."
- 	exec /startapp.sh
+    echo "Starting X app..."
+    exec /startapp.sh
 fi
 EOT
 

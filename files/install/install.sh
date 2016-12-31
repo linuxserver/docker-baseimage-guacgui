@@ -46,6 +46,7 @@ apt-get install -qy --force-yes --no-install-recommends xrdp
 
 # Install Guac
 apt-get install -qy --force-yes --no-install-recommends openjdk-7-jre \
+                                                        openjdk-7-jre-headless \
 							libossp-uuid-dev \
                                                         libpng12-dev \
                                                         libfreerdp-dev \

@@ -21,8 +21,8 @@ rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 #########################################
 
 # Repositories
-echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main universe restricted' > /etc/apt/sources.list
-echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main universe restricted' >> /etc/apt/sources.list
+echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt xenial main universe restricted' > /etc/apt/sources.list
+echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt xenial-updates main universe restricted' >> /etc/apt/sources.list
 add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
 
 # Install Dependencies
@@ -318,12 +318,12 @@ mkdir -p /usr/share/tomcat7-root/.guacamole
 mkdir -p /root/.guacamole
 
 # Install guacd
-dpkg -i /tmp/guacamole/guacamole-server_0.9.6_amd64.deb
+dpkg -i /tmp/guacamole/guacamole-server_0.9.9_amd64.deb
 ldconfig
 
 # Configure tomcat
-cp /tmp/guacamole/guacamole-0.9.6.war /var/lib/tomcat7/webapps/guacamole.war
-cp /tmp/guacamole/guacamole-auth-noauth-0.9.6.jar /var/lib/guacamole/classpath
+cp /tmp/guacamole/guacamole-0.9.9.war /var/lib/tomcat7/webapps/guacamole.war
+cp /tmp/guacamole/guacamole-auth-noauth-0.9.9.jar /var/lib/guacamole/classpath
 ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7/.guacamole/
 ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7-root/.guacamole/
 ln -s /etc/guacamole/guacamole.properties /root/.guacamole/

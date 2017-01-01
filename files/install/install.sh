@@ -246,7 +246,7 @@ touch /var/lib/tomcat7/logs/catalina.out
 
 cd /var/lib/tomcat7
 
-exec /usr/lib/jvm/java-7-oracle/jre/bin/java -Djava.util.logging.config.file=/var/lib/tomcat7/conf/logging.properties \
+exec /usr/lib/jvm/java-8-oracle/jre/bin/java -Djava.util.logging.config.file=/var/lib/tomcat7/conf/logging.properties \
                                            -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
                                            -Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC \
                                            -Djava.endorsed.dirs=/usr/share/tomcat7/endorsed \

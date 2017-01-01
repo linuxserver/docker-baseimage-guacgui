@@ -30,7 +30,8 @@ apt-get update -qq
 # Install general
 apt-get install -qy --force-yes --no-install-recommends apt-utils \
                                                         wget \
-							unzip
+							unzip \
+							dialog
 
 # Install window manager and x-server
 apt-get install -qy --force-yes --no-install-recommends vnc4server \

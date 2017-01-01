@@ -28,7 +28,8 @@ add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
 # Install Dependencies
 apt-get update -qq
 # Install general
-apt-get install -qy --force-yes --no-install-recommends wget \
+apt-get install -qy --force-yes --no-install-recommends apt-utils \
+                                                        wget \
 							unzip
 
 # Install window manager and x-server

@@ -23,7 +23,7 @@ rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 # Repositories
 echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt xenial main universe restricted' > /etc/apt/sources.list
 echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt xenial-updates main universe restricted' >> /etc/apt/sources.list
-add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
+# add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
 
 # Install Dependencies
 apt-get update -qq
@@ -35,8 +35,8 @@ apt-get install -qy --force-yes --no-install-recommends apt-utils \
 
 # Install window manager and x-server
 apt-get install -qy --force-yes --no-install-recommends vnc4server \
-							x11-xserver-utils \
-                                                        openbox \
+                                                        x11-xserver-utils \
+							openbox \
 							xfonts-base \
 							xfonts-100dpi \
 							xfonts-75dpi \
@@ -48,12 +48,11 @@ apt-get install -qy --force-yes --no-install-recommends xrdp
 
 # Install Guac
 apt-get install -qy --force-yes --no-install-recommends default-jre \
-                                                        #openjdk-7-jre-headless \
-							libossp-uuid-dev \
-                                                        libpng12-dev \
-                                                        libfreerdp-dev \
-                                                        libcairo2-dev \
-                                                        tomcat7
+                                                        libossp-uuid-dev \
+							libpng12-dev \
+							libfreerdp-dev \
+							libcairo2-dev \
+							tomcat7
 
 
 #########################################

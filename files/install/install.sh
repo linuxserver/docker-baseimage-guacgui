@@ -21,13 +21,15 @@ rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 #########################################
 
 # Repositories
+
 echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt xenial main universe restricted' > /etc/apt/sources.list
 echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt xenial-updates main universe restricted' >> /etc/apt/sources.list
-# add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
+
 
 # Install Dependencies
 apt-get update -qq
 # Install general
+
 apt-get install -qy --force-yes --no-install-recommends apt-utils \
                                                         wget \
 							unzip \
@@ -76,6 +78,31 @@ apt-get install -qy --force-yes --no-install-recommends vnc4server \
 apt-get install -qy --force-yes --no-install-recommends xrdp
 
 
+=======
+apt-get install -qy --force-yes --no-install-recommends wget \
+                            				unzip
+
+# Install window manager and x-server
+apt-get install -qy --force-yes --no-install-recommends x11-xserver-utils \
+                                                        libxrandr2 \
+                                                        libfuse2 \
+                                                        xutils \
+                                                        libxfixes3 \
+                                                        libx11-dev \
+                                                        libxml2 \
+                                                        zlib1g \
+                                                        fuse \
+                                                        autocutsel \
+                                                        pulseaudio \
+							x11-apps \
+                                                        openbox
+# x11rdp install
+dpkg -i /tmp/x11rdp/x11rdp_0.9.0+devel-1_amd64.deb
+
+# xrdp needs to be installed seperately
+dpkg -i /tmp/x11rdp/xrdp_0.9.0+devel_amd64.deb
+
+
 
 #########################################
 ##  FILES, SERVICES AND CONFIGURATION  ##
@@ -105,6 +132,7 @@ groupmod -g $GROUPID users
 usermod -u $USERID nobody
 usermod -g $GROUPID nobody
 usermod -d /nobody nobody
+usermod -a -G adm,sudo,fuse nobody
 chown -R nobody:users /nobody/ 
 EOT
 
@@ -117,26 +145,22 @@ APPNAME=${APP_NAME:-"GUI_APPLICATION"}
 sed -i -e "s#GUI_APPLICATION#$APPNAME#" /etc/xrdp/xrdp.ini
 
 if [[ -e /startapp.sh ]]; then 
-	chown nobody:users /startapp.sh
-	chmod +x /startapp.sh
+    chown nobody:users /startapp.sh
+    chmod +x /startapp.sh
 fi
 EOT
 
-
-# Xvnc
-
-
-# Xvnc
-mkdir -p /etc/service/Xvnc
-cat <<'EOT' > /etc/service/Xvnc/run
+# X11rdp
+mkdir -p /etc/service/X11rdp
+cat <<'EOT' > /etc/service/X11rdp/run
 #!/bin/bash
 exec 2>&1
 WD=${WIDTH:-1280}
 HT=${HEIGHT:-720}
 
-exec /sbin/setuser nobody Xvnc4 :1 -geometry ${WD}x${HT} -depth 16 -rfbwait 30000 -SecurityTypes None -rfbport 5901 -bs -ac \
-				   -pn -fp /usr/share/fonts/X11/misc/,/usr/share/fonts/X11/75dpi/,/usr/share/fonts/X11/100dpi/ \
-				   -co /etc/X11/rgb -dpi 96
+
+exec /sbin/setuser nobody X11rdp :1 -bs -ac -nolisten tcp -geometry ${WD}x${HT} -depth 16 -uds
+
 EOT
 
 # xrdp
@@ -147,19 +171,23 @@ exec 2>&1
 RSAKEYS=/etc/xrdp/rsakeys.ini
 
     # Check for rsa key
-    if [ ! -f $RSAKEYS ] || cmp $RSAKEYS /usr/share/doc/xrdp/rsakeys.ini > /dev/null; then
+    [ -f /usr/share/doc/xrdp/rsakeys.ini ] && rm /usr/share/doc/xrdp/rsakeys.ini
+    ln -s $RSAKEYS /usr/share/doc/xrdp/rsakeys.ini
+    if [ ! -f $RSAKEYS ]; then
         echo "Generating xrdp RSA keys..."
         (umask 077 ; xrdp-keygen xrdp $RSAKEYS)
         chown root:root $RSAKEYS
         if [ ! -f $RSAKEYS ] ; then
-            echo "could not create $RSAKEYS"
+	        echo "could not create $RSAKEYS"
             exit 1
         fi
-        echo "done"
     fi
+    [ -f /var/run/xrdp/xrdp.pid ] && rm /var/run/xrdp/xrdp.pid
+    echo "Starting xrdp!"
 
 exec /usr/sbin/xrdp --nodaemon
 EOT
+
 
 # xrdp.ini
 cat <<'EOT' > /etc/xrdp/xrdp.ini
@@ -182,13 +210,11 @@ new_cursors=yes
 use_fastpath=both
 hidelogwindow=yes
 
-[xrdp1]
-name=GUI_APPLICATION
-lib=libvnc.so
-username=nobody
-password=PASSWD
-ip=127.0.0.1
-port=5901
+[Logging]
+LogFile=xrdp-ng.log
+LogLevel=DEBUG
+EnableSyslog=1
+SyslogLevel=DEBUG
 
 [channels]
 rdpdr=true
@@ -196,55 +222,80 @@ rdpsnd=true
 drdynvc=true
 cliprdr=true
 rail=true
+
+[xrdp1]
+name=GUI_APPLICATION
+lib=libxup.so
+username=na
+password=na
+ip=127.0.0.1
+
+port=/tmp/.xrdp/xrdp_display_1
+chansrvport=/tmp/.xrdp/xrdp_chansrv_socket_1
+xserverbpp=16
+code=10
+
 EOT
 
-# xrdp-sesman
-mkdir -p /etc/service/xrdp-sesman
-cat <<'EOT' > /etc/service/xrdp-sesman/run
+# xrdp-chansrv
+mkdir -p /etc/service/xrdp-chansrv
+cat <<'EOT' > /etc/service/xrdp-chansrv/run
 #!/bin/bash
-exec 2>&1
 
-exec /usr/sbin/xrdp-sesman --nodaemon >> /var/log/xrdp-sesman_run.log 2>&1
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody xrdp-chansrv
 EOT
 
-# sesman.ini
-cat <<'EOT' > /etc/xrdp/sesman.ini
-[Globals]
-ListenAddress=127.0.0.1
-ListenPort=3350
-EnableUserWindowManager=1
-UserWindowManager=startwm.sh
-DefaultWindowManager=startwm.sh
+# autocutsel
+mkdir -p /etc/service/autocutsel
+cat <<'EOT' > /etc/service/autocutsel/run
+#!/bin/bash
 
-[Security]
-AllowRootLogin=1
-MaxLoginRetry=4
-TerminalServerUsers=tsusers
-TerminalServerAdmins=tsadmins
-AlwaysGroupCheck = false
-
-[Sessions]
-X11DisplayOffset=10
-MaxSessions=1
-KillDisconnected=0
-IdleTimeLimit=0
-DisconnectedTimeLimit=0
-Policy=Default
-
-[Logging]
-LogFile=xrdp-sesman.log
-LogLevel=DEBUG
-EnableSyslog=1
-SyslogLevel=DEBUG
-
-[Xvnc]
-param1=-bs
-param2=-ac
-param5=-localhost
-param6=-dpi
-param7=96
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel
 EOT
 
+# autocutsel2
+mkdir -p /etc/service/autocutsel2
+cat <<'EOT' > /etc/service/autocutsel2/run
+#!/bin/bash
+
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody autocutsel -selection PRIMARY
+EOT
+
+# xclipboard
+mkdir -p /etc/service/xclipboard
+cat <<'EOT' > /etc/service/xclipboard/run
+#!/bin/bash
+sv -w7 check openbox
+
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody xclipboard
+EOT
+
+# asound.conf
+cat <<'EOT' > /etc/asound.conf
+pcm.pulse {
+    type pulse
+}
+
+ctl.pulse {
+    type pulse
+}
+
+pcm.!default {
+    type pulse
+}
+
+ctl.!default {
+    type pulse
+}
+EOT
+
+# pulseaudio
+mkdir -p /etc/service/pulseaudio
+cat <<'EOT' > /etc/service/pulseaudio/run
+#!/bin/bash
+
+exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody pulseaudio -F /etc/xrdp/pulse/default.pa -n
+EOT
 
 # openbox
 mkdir -p /etc/service/openbox
@@ -256,18 +307,16 @@ exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody  /usr/bin/openbox-session
 EOT
 
 
-
 # Openbox User nobody autostart
 cat <<'EOT' > /nobody/.config/openbox/autostart
 # Programs that will run after Openbox has started
 
 xsetroot -solid black -cursor_name left_ptr
 if [ -e /startapp.sh ]; then 
-	echo "Starting X app..."
- 	exec /startapp.sh
+    echo "Starting X app..."
+    exec /startapp.sh
 fi
 EOT
-
 
 chmod -R +x /etc/service/ /etc/my_init.d/ 
 
@@ -280,10 +329,16 @@ chmod -R +x /etc/service/ /etc/my_init.d/
 cp /tmp/openbox/rc.xml /nobody/.config/openbox/rc.xml
 chown nobody:users /nobody/.config/openbox/rc.xml
 
+
 # Install slimjet
 cd /tmp
 wget 'http://www.slimjet.com/download.php?version=lnx64&type=deb&beta=1&server=' -O slimjet.deb
 dpkg -i slimjet.deb
+
+
+# pulseauido rdp
+cp /tmp/x11rdp/module-xrdp* /usr/lib/pulse-4.0/modules
+chown -R 777 /usr/lib/pulse-4.0/modules
 
 
 #########################################
@@ -300,3 +355,4 @@ rm -rf /var/lib/apt/lists/*
 rm -rf /usr/share/doc/*
 rm -rf /tmp/* /var/tmp/*
 rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp/openbox
+

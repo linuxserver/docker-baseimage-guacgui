@@ -16,4 +16,23 @@ CMD ["/sbin/my_init"]
 ##         RUN INSTALL SCRIPT          ##
 #########################################
 COPY ./files/ /tmp/
-RUN chmod +x /tmp/install/install.sh && /tmp/install/install.sh && rm -r /tmp/install
+RUN chmod +x /tmp/install/install.sh && /tmp/install/install.sh
+
+
+#########################################
+##          GUI APP INSTALL            ##
+#########################################
+
+# Install steps for X app
+
+
+# Copy X app start script to right location
+COPY startapp.sh /startapp.sh
+
+#########################################
+##         EXPORTS AND VOLUMES         ##
+#########################################
+
+# Place whater volumes and ports you want exposed here:
+VOLUME ["/config"]
+EXPOSE 3389

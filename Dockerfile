@@ -1,6 +1,6 @@
 # dockergui
 FROM phusion/baseimage:0.9.19
-MAINTAINER C4wiz@live.com
+MAINTAINER 2devnull
 
 #########################################
 ##        ENVIRONMENTAL CONFIG         ##

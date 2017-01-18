@@ -31,7 +31,37 @@ apt-get update -qq
 apt-get install -qy --force-yes --no-install-recommends apt-utils \
                                                         wget \
 							unzip \
-							dialog
+							dialog \
+							gconf-service \
+							gconf-service-backend \
+							gconf2-common \
+							libappindicator1 \
+							libasound2 \
+							libasound2-data \
+							libatk1.0-0 \
+							libatk1.0-data \
+							libavahi-client3 \
+							libavahi-common-data \
+							libavahi-common3 \
+							libcups2 libcurl3 \
+							libdbusmenu-glib4 \
+							libdbusmenu-gtk4 \
+							libgconf-2-4 \
+							libgtk2.0-0 \
+							libgtk2.0-common \
+							libindicator7 \
+							libnspr4 \
+							libnss3 \
+							libnss3-nssdb \
+							libpango1.0-0 \
+							libpangox-1.0-0 \
+							libxss1 \
+							shared-mime-info \
+							xdg-utils \
+							libvte-common \
+							libvte9 \
+							lxterminal \
+							nano
 
 # Install window manager and x-server
 apt-get install -qy --force-yes --no-install-recommends vnc4server \
@@ -261,6 +291,12 @@ dpkg -i slimjet.deb
 #########################################
 
 # Clean APT install files
-apt-get autoremove -y 
 apt-get clean -y
+apt-get autoclean -y
+apt-get autoremove -y
+rm -rf /usr/share/locale/*
+rm -rf /var/cache/debconf/*-old
+rm -rf /var/lib/apt/lists/*
+rm -rf /usr/share/doc/*
+rm -rf /tmp/* /var/tmp/*
 rm -rf /var/lib/apt/lists/* /var/cache/* /var/tmp/* /tmp/openbox

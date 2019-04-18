@@ -89,7 +89,8 @@ RUN \
  apt-get install -qy --no-install-recommends \
 	$(cat /usr/share/doc/${PKG_NAME}/DEPENDENCIES) && \
  echo "**** install guacamole ****" && \
- mkdir -p /etc/guacamole/{extensions,lib} && \
+ mkdir -p /etc/guacamole && \
+ mkdir /etc/guacamole/{extensions,lib} && \
  apt-get install -qy --no-install-recommends \
 	${TOMCAT_VER} \
 	${TOMCAT_VER}-common \

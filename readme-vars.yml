@@ -41,7 +41,7 @@ param_env_vars:
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  This is baseimage meant to be used as base for graphical applications. Please
+  This is meant to be used as base for graphical applications. Please
   refer to the example folder for usage.
   &nbsp;
   Passwords can be generate via the following:

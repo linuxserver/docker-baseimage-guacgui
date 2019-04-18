@@ -1,0 +1,58 @@
+---
+
+# project information
+project_name: docker-baseimage-guacgui
+project_url: "https://github.com/dockergui/"
+project_logo: ""
+project_desc: |
+  This Docker image makes it possible to use any X application on a headless
+  server through a modern web browser such as chrome. Additionally the
+  container can be accessed using any rdp client. You can access the web
+  interface by going to port 8080 or rdp via port 3389.
+project_blurb: |
+  ## [{{ project_name|capitalize }}]({{ project_url }})
+  &nbsp;
+  {{ project_desc }}
+project_lsio_github_repo_url: "https://github.com/linuxserver/dockergui"
+
+# supported architectures
+available_architectures:
+  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
+  - { arch: "{{ arch_armhf }}", tag: "arm32v7-latest"}
+
+# container parameters
+param_container_name: "{{ project_name }}"
+param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "</path/to/appdata>", desc: "Contains X user's home directory contents." }
+param_usage_include_ports: true
+param_ports:
+  - { external_port: "8080", internal_port: "8080", port_desc: "Allows HTTP access to the internal X server." }
+  - { external_port: "3389", internal_port: "3389", port_desc: "Allows RDP access to the internal X server." }
+param_usage_include_env: true
+param_env_vars:
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London"}
+  - { env_var: "APPNAME", env_value: "xclock", desc: "Specify the graphical application name shown on RDP access."}
+  - { env_var: "GUAC_USER", env_value: "abc", desc: "Specify the username for guacamole's web interface."}
+  - { env_var: "GUAC_PASS", env_value: "900150983cd24fb0d6963f7d28e17f72", desc: "Specify the password's md5 hash for guacamole's web interface."}
+
+# application setup block
+app_setup_block_enabled: true
+app_setup_block: |
+  This is baseimage meant to be used as base for graphical applications. Please
+  refer to the example folder for usage.
+  &nbsp;
+  Passwords can be generate via the following:
+  ```
+  echo -n password | openssl md5
+  ```
+  ```
+  printf '%s' password | md5sum
+  ```
+  Please beaware this image is not hardened for internet usage. Use
+  a reverse ssl proxy to increase security.
+
+# changelog
+changelogs:
+  - { date: "17.04.19:", desc: "Rebase docker-baseimage-gui and Ubuntu 18.04." }

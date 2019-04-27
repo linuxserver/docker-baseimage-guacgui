@@ -1,0 +1,26 @@
+---
+
+# jenkins variables
+project_name: docker-baseimage-guacgui
+external_type: os
+release_type: stable
+release_tag: latest
+ls_branch: master
+repo_vars:
+  - BUILD_VERSION_ARG = 'OS'
+  - LS_USER = 'linuxserver'
+  - LS_REPO = 'docker-baseimage-guacgui'
+  - CONTAINER_NAME = 'baseimage-guacgui'
+  - DOCKERHUB_IMAGE = 'lsiobase/guacgui'
+  - DEV_DOCKERHUB_IMAGE = 'lsiodev/guacgui'
+  - PR_DOCKERHUB_IMAGE = 'lspipepr/guacgui'
+  - DIST_IMAGE = 'ubuntu'
+  - MULTIARCH='true'
+  - CI='true'
+  - CI_WEB='false'
+  - CI_PORT='80'
+  - CI_SSL='true'
+  - CI_DELAY='30'
+  - CI_DOCKERENV='TZ=US/Pacific'
+  - CI_AUTH='user:password'
+  - CI_WEBPATH=''

@@ -41,7 +41,7 @@ gzip1.6-5ubuntu1
 hostname3.20
 init-system-helpers1.51
 java-common0.68ubuntu1~18.04.1
-keyboard-configuration1.178ubuntu2.8
+keyboard-configuration1.178ubuntu2.9
 krb5-locales1.16-2ubuntu0.1
 libacl12.2.52-3build1
 libapparmor12.12-4ubuntu5.1

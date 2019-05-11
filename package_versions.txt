@@ -32,7 +32,7 @@ fuse2.9.7-1ubuntu1
 gawk1:4.1.4+dfsg-1build1
 gcc-7-base7.4.0-1ubuntu1~18.04
 gcc-8-base8.3.0-6ubuntu1~18.04
-ghostscript9.26~dfsg+0-0ubuntu0.18.04.8
+ghostscript9.26~dfsg+0-0ubuntu0.18.04.9
 gpgv2.2.4-1ubuntu1.2
 grep3.1-2
 groff-base1.22.3-10
@@ -125,8 +125,8 @@ libgmp102:6.1.2+dfsg-2
 libgnutls303.5.18-1ubuntu1
 libgpg-error01.27-6
 libgraphite2-31.3.11-2
-libgs99.26~dfsg+0-0ubuntu0.18.04.8
-libgs9-common9.26~dfsg+0-0ubuntu0.18.04.8
+libgs99.26~dfsg+0-0ubuntu0.18.04.9
+libgs9-common9.26~dfsg+0-0ubuntu0.18.04.9
 libgssapi3-heimdal7.5.0+dfsg-1
 libgssapi-krb5-21.16-2ubuntu0.1
 libharfbuzz0b1.7.2-1ubuntu1

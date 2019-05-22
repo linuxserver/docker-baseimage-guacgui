@@ -1,7 +1,7 @@
 ---
 
 # project information
-project_name: docker-baseimage-guacgui
+project_name: baseimage-guacgui
 full_custom_readme: |
   {% raw -%}
   [linuxserverurl]: https://linuxserver.io

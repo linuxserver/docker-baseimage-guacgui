@@ -89,8 +89,9 @@ RUN \
  apt-get install -qy --no-install-recommends \
 	$(cat /usr/share/doc/${PKG_NAME}/DEPENDENCIES) && \
  echo "**** install guacamole ****" && \
- mkdir -p /etc/guacamole && \
- mkdir /etc/guacamole/{extensions,lib} && \
+ mkdir -p \
+	/etc/guacamole/extensions \
+	/etc/guacamole/lib && \
  apt-get install -qy --no-install-recommends \
 	${TOMCAT_VER} \
 	${TOMCAT_VER}-common \
@@ -99,6 +100,11 @@ RUN \
 	-L https://sourceforge.net/projects/guacamole/files/current/binary/guacamole-${GUAC_VER}.war && \
  echo "GUACAMOLE_HOME=/etc/guacamole" >> /etc/default/${TOMCAT_VER} && \
  ln -s /etc/guacamole /usr/share/${TOMCAT_VER}/.guacamole && \
+ curl -so /tmp/guacamole-noauth.tar.gz \
+	-L http://archive.apache.org/dist/guacamole/${GUAC_VER}/binary/guacamole-auth-noauth-${GUAC_VER}.tar.gz && \
+ mkdir -p /tmp/noauth && \
+ tar -xf /tmp/guacamole-noauth.tar.gz --strip=1 -C /tmp/noauth && \
+ mv /tmp/noauth/guacamole-auth-noauth-${GUAC_VER}.jar /defaults/ && \
  echo "**** clean up ****" && \
  rm -rf \
 	/var/lib/${TOMCAT_VER}/webapps/ROOT \

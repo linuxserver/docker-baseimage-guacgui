@@ -1,7 +1,7 @@
 adduser3.116ubuntu1
 apt1.6.11
 apt-utils1.6.11
-base-files10.1ubuntu2.5
+base-files10.1ubuntu2.6
 base-passwd3.5.44
 bash4.4.18-2ubuntu1.2
 bsdmainutils11.1.2ubuntu1
@@ -223,7 +223,7 @@ libssl1.0.01.0.2n-1ubuntu5.3
 libssl1.11.1.1-1ubuntu2.1~18.04.4
 libstartup-notification00.12-5
 libstdc++68.3.0-6ubuntu1~18.04.1
-libsystemd0237-3ubuntu10.24
+libsystemd0237-3ubuntu10.25
 libtasn1-64.13-2
 libtdb11.3.15-2
 libthai00.1.27-2
@@ -231,7 +231,7 @@ libthai-data0.1.27-2
 libtiff54.0.9-5ubuntu0.2
 libtinfo56.1-1ubuntu1.18.04
 libtomcat8-java8.5.39-1ubuntu1~18.04.2
-libudev1237-3ubuntu10.24
+libudev1237-3ubuntu10.25
 libunistring20.9.9-0ubuntu2
 libusb-1.0-02:1.0.21-2
 libuuid12.31.1-0.4ubuntu3.3
@@ -339,7 +339,7 @@ tomcat8-user8.5.39-1ubuntu1~18.04.2
 tzdata2019b-0ubuntu0.18.04
 ubuntu-keyring2018.09.18.1~18.04.0
 ucf3.0038
-udev237-3ubuntu10.24
+udev237-3ubuntu10.25
 util-linux2.31.1-0.4ubuntu3.3
 x11-apps7.7+6ubuntu1
 x11-common1:7.7+19ubuntu7.1

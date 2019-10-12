@@ -84,8 +84,8 @@ libdrm-radeon12.4.97-1ubuntu1~18.04.1
 libecj-java3.16.0-1~18.04
 libedit23.1-20170329-1
 libegl11.0.0-2ubuntu2.3
-libegl1-mesa19.0.8-0ubuntu0~18.04.2
-libegl-mesa019.0.8-0ubuntu0~18.04.2
+libegl1-mesa19.0.8-0ubuntu0~18.04.3
+libegl-mesa019.0.8-0ubuntu0~18.04.3
 libelf10.170-0.4ubuntu0.1
 libepoxy01.4.3-1
 libexpat12.2.5-3ubuntu0.2
@@ -107,7 +107,7 @@ libfreerdp-primitives1.11.1.0~git20140921.1.440916e+dfsg1-15ubuntu1.18.04.1
 libfreerdp-utils1.11.1.0~git20140921.1.440916e+dfsg1-15ubuntu1.18.04.1
 libfreetype62.8.1-2ubuntu2
 libfuse22.9.7-1ubuntu1
-libgbm119.0.8-0ubuntu0~18.04.2
+libgbm119.0.8-0ubuntu0~18.04.3
 libgcc11:8.3.0-6ubuntu1~18.04.1
 libgcrypt201.8.1-4ubuntu1.1
 libgdbm51.14.1-6
@@ -115,12 +115,12 @@ libgdk-pixbuf2.0-02.36.11-2
 libgdk-pixbuf2.0-common2.36.11-2
 libgif75.1.4-2ubuntu0.1
 libgl11.0.0-2ubuntu2.3
-libgl1-mesa-dri19.0.8-0ubuntu0~18.04.2
-libglapi-mesa19.0.8-0ubuntu0~18.04.2
+libgl1-mesa-dri19.0.8-0ubuntu0~18.04.3
+libglapi-mesa19.0.8-0ubuntu0~18.04.3
 libglib2.0-02.56.4-0ubuntu0.18.04.4
 libglvnd01.0.0-2ubuntu2.3
 libglx01.0.0-2ubuntu2.3
-libglx-mesa019.0.8-0ubuntu0~18.04.2
+libglx-mesa019.0.8-0ubuntu0~18.04.3
 libgmp102:6.1.2+dfsg-2
 libgnutls303.5.18-1ubuntu1.1
 libgpg-error01.27-6
@@ -231,7 +231,7 @@ libthai-data0.1.27-2
 libtiff54.0.9-5ubuntu0.2
 libtinfo56.1-1ubuntu1.18.04
 libtomcat8-java8.5.39-1ubuntu1~18.04.3
-libudev1237-3ubuntu10.29
+libudev1237-3ubuntu10.31
 libunistring20.9.9-0ubuntu2
 libusb-1.0-02:1.0.21-2
 libuuid12.31.1-0.4ubuntu3.4
@@ -336,10 +336,10 @@ tar1.29b-2ubuntu0.1
 tomcat88.5.39-1ubuntu1~18.04.3
 tomcat8-common8.5.39-1ubuntu1~18.04.3
 tomcat8-user8.5.39-1ubuntu1~18.04.3
-tzdata2019b-0ubuntu0.18.04
+tzdata2019c-0ubuntu0.18.04
 ubuntu-keyring2018.09.18.1~18.04.0
 ucf3.0038
-udev237-3ubuntu10.29
+udev237-3ubuntu10.31
 util-linux2.31.1-0.4ubuntu3.4
 x11-apps7.7+6ubuntu1
 x11-common1:7.7+19ubuntu7.1

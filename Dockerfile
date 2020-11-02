@@ -1,4 +1,4 @@
-FROM lsiobase/ubuntu:bionic as builder
+FROM ghcr.io/linuxserver/baseimage-ubuntu:bionic as builder
 
 ARG GUAC_VER="0.9.14"
 ARG BUILD_DIR=/tmp/guacd-docker-BUILD
@@ -54,7 +54,7 @@ RUN \
  mv /tmp/${PKG_NAME}_${GUAC_VER}-*.deb /tmp/${PKG_NAME}_${GUAC_VER}.deb
 
 
-FROM lsiobase/gui
+FROM ghcr.io/linuxserver/baseimage-gui
 
 # set version label
 ARG BUILD_DATE

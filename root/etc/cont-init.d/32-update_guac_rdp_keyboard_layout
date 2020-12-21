@@ -1,0 +1,52 @@
+#!/usr/bin/with-contenv bash
+
+# This script sets the keyboard layouts on gucamole server side. Needed if the the connection is RDP
+# It reflects all implemented keyboard layout in gucamole 0.9.14 
+# (https://guacamole.apache.org/doc/0.9.14/gug/configuring-guacamole.html#rdp - see server-layout)
+
+cred_file="/etc/guacamole/user-mapping.xml"
+noauth_file="/defaults/noauth-config.xml"
+
+function set_layout 
+{
+    layout=$1
+    sed -i -e "s/en-us-qwerty/$layout/g" $cred_file
+    sed -i -e "s/en-us-qwerty/$layout/g" $noauth_file
+}
+
+# To garantee a fresh start I copy the default /defaults/user-mapping.xml.tpl to /etc/gucamole/user-mapping.xml ...
+cp /defaults/user-mapping.xml.tpl $cred_file
+
+# ... and the /defaults/noauth-config.xml.tpl to /defaults/noauth-config.xml 
+# (mostly done for not interfering with 35-update_guac_creds)
+cp /defaults/noauth-config.xml.tpl $noauth_file
+
+## Check if GUAC_KEYBOARD_LAYOUT is empty and not "en-us-qwerty" (this is default)
+if [ -n "$GUAC_KEYBOARD_LAYOUT" ] && [ "$GUAC_KEYBOARD_LAYOUT" != "en-us-qwerty" ]; then
+  # The case reflects all implementet keyboard layouts of guacamole 0.94
+  # I used case to be sure that only a valid keyboard layout is set by the user
+  case "$GUAC_KEYBOARD_LAYOUT" in
+    "de-de-qwertz") # German keyboard (qwertz)
+        set_layout "$GUAC_KEYBOARD_LAYOUT" 
+        ;;
+    "fr-fr-azerty") # French keyboard (azerty)
+        set_layout "$GUAC_KEYBOARD_LAYOUT" 
+        ;;
+    "fr-ch-qwertz") # Swiss French keyboard (qwertz)
+        set_layout "$GUAC_KEYBOARD_LAYOUT" 
+        ;;
+    "it-it-qwerty") # Italian keyboard
+        set_layout "$GUAC_KEYBOARD_LAYOUT" 
+        ;;
+    "ja-jp-qwerty") # Japanese keyboard
+        set_layout "$GUAC_KEYBOARD_LAYOUT" 
+        ;;
+    "sv-se-qwerty") # Swedish keyboard
+        set_layout "$GUAC_KEYBOARD_LAYOUT" 
+        ;;
+    *)  # triple failsafe ;-) 
+        set_layout "en-us-qwerty"   
+        ;;
+  esac
+fi
+

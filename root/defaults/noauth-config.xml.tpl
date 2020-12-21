@@ -4,5 +4,6 @@
 	<param name="port" value="3389" />
 	<param name="username" value="abc" />
 	<param name="password" value="abc" />
+        <param name="server-layout" value="en-us-qwerty" />
     </config>
 </configs>

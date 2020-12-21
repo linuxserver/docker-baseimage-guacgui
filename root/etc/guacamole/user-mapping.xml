@@ -10,5 +10,6 @@
         <param name="ignore-cert">true</param>
         <param name="username">abc</param>
         <param name="password">abc</param>
+        <param name="server-layout">en-us-qwerty</param>
     </authorize>
 </user-mapping>

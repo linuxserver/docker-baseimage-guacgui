@@ -34,7 +34,7 @@ fuse2.9.7-1ubuntu1
 gawk1:4.1.4+dfsg-1build1
 gcc-7-base7.5.0-3ubuntu1~18.04
 gcc-8-base8.4.0-1ubuntu1~18.04
-ghostscript9.26~dfsg+0-0ubuntu0.18.04.13
+ghostscript9.26~dfsg+0-0ubuntu0.18.04.14
 glib-networking2.56.0-1ubuntu0.1
 glib-networking-common2.56.0-1ubuntu0.1
 glib-networking-services2.56.0-1ubuntu0.1
@@ -132,8 +132,8 @@ libgmp102:6.1.2+dfsg-2
 libgnutls303.5.18-1ubuntu1.4
 libgpg-error01.27-6
 libgraphite2-31.3.11-2
-libgs99.26~dfsg+0-0ubuntu0.18.04.13
-libgs9-common9.26~dfsg+0-0ubuntu0.18.04.13
+libgs99.26~dfsg+0-0ubuntu0.18.04.14
+libgs9-common9.26~dfsg+0-0ubuntu0.18.04.14
 libgssapi3-heimdal7.5.0+dfsg-1
 libgssapi-krb5-21.16-2ubuntu0.2
 libharfbuzz0b1.7.2-1ubuntu1
@@ -203,7 +203,7 @@ libpipeline11.5.0-1
 libpixman-1-00.34.0-2
 libpng16-161.6.34-1ubuntu0.18.04.2
 libprocps62:3.3.12-3ubuntu1.2
-libproxy1v50.4.15-1ubuntu0.1
+libproxy1v50.4.15-1ubuntu0.2
 libpsl50.19.1-5build1
 libpthread-stubs0-dev0.3-4
 libpulse01:11.1-1ubuntu7.11

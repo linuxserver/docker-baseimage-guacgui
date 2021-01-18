@@ -71,7 +71,7 @@ libc62.27-3ubuntu1.4
 libcairo21.15.10-2ubuntu0.1
 libcap21:2.25-1.2
 libcap-ng00.7.7-3.1
-libc-bin2.27-3ubuntu1.2
+libc-bin2.27-3ubuntu1.4
 libcom-err21.44.1-1ubuntu1.3
 libcroco30.6.12-2
 libcups22.2.7-1ubuntu2.8
@@ -186,7 +186,7 @@ libogg01.3.2-1
 libopus01.1.2-1ubuntu1
 liborc-0.4-01:0.4.28-1
 libossp-uuid161.6.2-1.5build4
-libp11-kit00.23.9-2
+libp11-kit00.23.9-2ubuntu0.1
 libpam0g1.1.8-3.6ubuntu2.18.04.2
 libpam-modules1.1.8-3.6ubuntu2.18.04.2
 libpam-modules-bin1.1.8-3.6ubuntu2.18.04.2
@@ -213,9 +213,9 @@ libroken18-heimdal7.5.0+dfsg-1
 librsvg2-22.40.20-2ubuntu0.2
 librtmp12.4+20151223.gitfa8646d.1-1
 libsamplerate00.1.9-1
-libsasl2-22.1.27~101-g0780600+dfsg-3ubuntu2.1
-libsasl2-modules2.1.27~101-g0780600+dfsg-3ubuntu2.1
-libsasl2-modules-db2.1.27~101-g0780600+dfsg-3ubuntu2.1
+libsasl2-22.1.27~101-g0780600+dfsg-3ubuntu2.3
+libsasl2-modules2.1.27~101-g0780600+dfsg-3ubuntu2.3
+libsasl2-modules-db2.1.27~101-g0780600+dfsg-3ubuntu2.3
 libseccomp22.4.3-1ubuntu3.18.04.3
 libselinux12.7-2build2
 libsemanage12.7-2build2
@@ -235,7 +235,7 @@ libssl1.0.01.0.2n-1ubuntu5.5
 libssl1.11.1.1-1ubuntu2.1~18.04.7
 libstartup-notification00.12-5
 libstdc++68.4.0-1ubuntu1~18.04
-libsystemd0237-3ubuntu10.42
+libsystemd0237-3ubuntu10.43
 libtasn1-64.13-2
 libtdb11.3.15-2
 libthai00.1.27-2

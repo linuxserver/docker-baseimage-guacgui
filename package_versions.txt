@@ -232,7 +232,7 @@ libspeexdsp11.2~rc1.2-1ubuntu2
 libsqlite3-03.22.0-1ubuntu0.4
 libss21.44.1-1ubuntu1.3
 libssl1.0.01.0.2n-1ubuntu5.6
-libssl1.11.1.1-1ubuntu2.1~18.04.8
+libssl1.11.1.1-1ubuntu2.1~18.04.9
 libstartup-notification00.12-5
 libstdc++68.4.0-1ubuntu1~18.04
 libsystemd0237-3ubuntu10.44
@@ -243,7 +243,7 @@ libthai-data0.1.27-2
 libtiff54.0.9-5ubuntu0.4
 libtinfo56.1-1ubuntu1.18.04
 libtomcat8-java8.5.39-1ubuntu1~18.04.3
-libudev1237-3ubuntu10.44
+libudev1237-3ubuntu10.45
 libunistring20.9.9-0ubuntu2
 libusb-1.0-02:1.0.21-2
 libuuid12.31.1-0.4ubuntu3.7
@@ -350,7 +350,7 @@ tomcat8-user8.5.39-1ubuntu1~18.04.3
 tzdata2021a-0ubuntu0.18.04
 ubuntu-keyring2018.09.18.1~18.04.0
 ucf3.0038
-udev237-3ubuntu10.44
+udev237-3ubuntu10.45
 util-linux2.31.1-0.4ubuntu3.7
 x11-apps7.7+6ubuntu1
 x11-common1:7.7+19ubuntu7.1

@@ -243,7 +243,7 @@ libthai-data0.1.27-2
 libtiff54.0.9-5ubuntu0.4
 libtinfo56.1-1ubuntu1.18.04
 libtomcat8-java8.5.39-1ubuntu1~18.04.3
-libudev1237-3ubuntu10.46
+libudev1237-3ubuntu10.47
 libunistring20.9.9-0ubuntu2
 libusb-1.0-02:1.0.21-2
 libuuid12.31.1-0.4ubuntu3.7
@@ -350,7 +350,7 @@ tomcat8-user8.5.39-1ubuntu1~18.04.3
 tzdata2021a-0ubuntu0.18.04
 ubuntu-keyring2018.09.18.1~18.04.2
 ucf3.0038
-udev237-3ubuntu10.46
+udev237-3ubuntu10.47
 util-linux2.31.1-0.4ubuntu3.7
 x11-apps7.7+6ubuntu1
 x11-common1:7.7+19ubuntu7.1

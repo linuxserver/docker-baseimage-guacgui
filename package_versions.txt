@@ -235,7 +235,7 @@ libssl1.0.01.0.2n-1ubuntu5.6
 libssl1.11.1.1-1ubuntu2.1~18.04.9
 libstartup-notification00.12-5
 libstdc++68.4.0-1ubuntu1~18.04
-libsystemd0237-3ubuntu10.46
+libsystemd0237-3ubuntu10.47
 libtasn1-64.13-2
 libtdb11.3.15-2
 libthai00.1.27-2
@@ -273,9 +273,9 @@ libwinpr-sysinfo0.11.1.0~git20140921.1.440916e+dfsg1-15ubuntu1.18.04.2
 libwinpr-thread0.11.1.0~git20140921.1.440916e+dfsg1-15ubuntu1.18.04.2
 libwinpr-utils0.11.1.0~git20140921.1.440916e+dfsg1-15ubuntu1.18.04.2
 libwrap07.6.q-27
-libx11-62:1.6.4-3ubuntu0.3
+libx11-62:1.6.4-3ubuntu0.4
 libx11-data2:1.6.4-3ubuntu0.3
-libx11-dev2:1.6.4-3ubuntu0.3
+libx11-dev2:1.6.4-3ubuntu0.4
 libx11-xcb12:1.6.4-3ubuntu0.3
 libxau61:1.0.8-1ubuntu1
 libxau-dev1:1.0.8-1ubuntu1

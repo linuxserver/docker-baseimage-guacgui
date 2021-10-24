@@ -347,7 +347,7 @@ tar1.29b-2ubuntu0.2
 tomcat88.5.39-1ubuntu1~18.04.3
 tomcat8-common8.5.39-1ubuntu1~18.04.3
 tomcat8-user8.5.39-1ubuntu1~18.04.3
-tzdata2021a-0ubuntu0.18.04
+tzdata2021a-2ubuntu0.18.04
 ubuntu-keyring2018.09.18.1~18.04.2
 ucf3.0038
 udev237-3ubuntu10.52

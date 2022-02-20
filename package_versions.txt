@@ -228,7 +228,7 @@ libsmartcols12.31.1-0.4ubuntu3.7
 libsnapd-glib11.58-0ubuntu0.18.04.0
 libsndfile11.0.28-4ubuntu0.18.04.2
 libsoup2.4-12.62.1-1ubuntu0.4
-libspeexdsp11.2~rc1.2-1ubuntu2
+libspeexdsp11.2~rc1.2-1ubuntu2.1
 libsqlite3-03.22.0-1ubuntu0.4
 libss21.44.1-1ubuntu1.3
 libssl1.0.01.0.2n-1ubuntu5.7

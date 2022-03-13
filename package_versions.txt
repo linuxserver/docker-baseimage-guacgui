@@ -95,7 +95,7 @@ libegl1-mesa20.0.8-0ubuntu1~18.04.1
 libegl-mesa020.0.8-0ubuntu1~18.04.1
 libelf10.170-0.4ubuntu0.1
 libepoxy01.4.3-1
-libexpat12.2.5-3ubuntu0.4
+libexpat12.2.5-3ubuntu0.7
 libext2fs21.44.1-1ubuntu1.3
 libfdisk12.31.1-0.4ubuntu3.7
 libffi63.2.1-8
@@ -213,9 +213,9 @@ libroken18-heimdal7.5.0+dfsg-1
 librsvg2-22.40.20-2ubuntu0.2
 librtmp12.4+20151223.gitfa8646d.1-1
 libsamplerate00.1.9-1
-libsasl2-22.1.27~101-g0780600+dfsg-3ubuntu2.3
-libsasl2-modules2.1.27~101-g0780600+dfsg-3ubuntu2.3
-libsasl2-modules-db2.1.27~101-g0780600+dfsg-3ubuntu2.3
+libsasl2-22.1.27~101-g0780600+dfsg-3ubuntu2.4
+libsasl2-modules2.1.27~101-g0780600+dfsg-3ubuntu2.4
+libsasl2-modules-db2.1.27~101-g0780600+dfsg-3ubuntu2.4
 libseccomp22.5.1-1ubuntu1~18.04.2
 libselinux12.7-2build2
 libsemanage12.7-2build2
@@ -323,12 +323,12 @@ lsb-base9.20170808ubuntu1
 man-db2.8.3-2ubuntu0.1
 mawk1.3.3-17ubuntu3
 mount2.31.1-0.4ubuntu3.7
-multiarch-support2.27-3ubuntu1.4
+multiarch-support2.27-3ubuntu1.5
 ncurses-base6.1-1ubuntu1.18.04
 ncurses-bin6.1-1ubuntu1.18.04
 netcat-traditional1.10-41.1
 openbox3.6.1-7ubuntu0.1
-openjdk-11-jre-headless11.0.13+8-0ubuntu1~18.04
+openjdk-11-jre-headless11.0.14+9-0ubuntu2~18.04
 openssl1.1.1-1ubuntu2.1~18.04.14
 passwd1:4.5-1ubuntu2.2
 perl-base5.26.1-6ubuntu0.5

@@ -71,7 +71,7 @@ libc62.27-3ubuntu1.5
 libcairo21.15.10-2ubuntu0.1
 libcap21:2.25-1.2
 libcap-ng00.7.7-3.1
-libc-bin2.27-3ubuntu1.4
+libc-bin2.27-3ubuntu1.5
 libcom-err21.44.1-1ubuntu1.3
 libcroco30.6.12-2
 libcups22.2.7-1ubuntu2.8
@@ -328,8 +328,8 @@ ncurses-base6.1-1ubuntu1.18.04
 ncurses-bin6.1-1ubuntu1.18.04
 netcat-traditional1.10-41.1
 openbox3.6.1-7ubuntu0.1
-openjdk-11-jre-headless11.0.14+9-0ubuntu2~18.04
-openssl1.1.1-1ubuntu2.1~18.04.14
+openjdk-11-jre-headless11.0.14.1+1-0ubuntu1~18.04
+openssl1.1.1-1ubuntu2.1~18.04.15
 passwd1:4.5-1ubuntu2.2
 perl-base5.26.1-6ubuntu0.5
 poppler-data0.4.8-2
@@ -343,7 +343,7 @@ sensible-utils0.0.12
 shared-mime-info1.9-2
 ssl-cert1.0.39
 sysvinit-utils2.88dsf-59.10ubuntu1
-tar1.29b-2ubuntu0.2
+tar1.29b-2ubuntu0.3
 tomcat88.5.39-1ubuntu1~18.04.3
 tomcat8-common8.5.39-1ubuntu1~18.04.3
 tomcat8-user8.5.39-1ubuntu1~18.04.3
@@ -372,4 +372,4 @@ xserver-common2:1.19.6-1ubuntu4.10
 xserver-xorg-core2:1.19.6-1ubuntu4.10
 xtrans-dev1.3.5-1
 xutils1:7.7+19ubuntu7.1
-zlib1g1:1.2.11.dfsg-0ubuntu2
+zlib1g1:1.2.11.dfsg-0ubuntu2.1

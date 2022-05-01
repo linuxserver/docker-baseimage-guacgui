@@ -34,7 +34,7 @@ fuse2.9.7-1ubuntu1
 gawk1:4.1.4+dfsg-1build1
 gcc-7-base7.5.0-3ubuntu1~18.04
 gcc-8-base8.4.0-1ubuntu1~18.04
-ghostscript9.26~dfsg+0-0ubuntu0.18.04.15
+ghostscript9.26~dfsg+0-0ubuntu0.18.04.16
 glib-networking2.56.0-1ubuntu0.1
 glib-networking-common2.56.0-1ubuntu0.1
 glib-networking-services2.56.0-1ubuntu0.1
@@ -132,8 +132,8 @@ libgmp102:6.1.2+dfsg-2
 libgnutls303.5.18-1ubuntu1.5
 libgpg-error01.27-6
 libgraphite2-31.3.11-2
-libgs99.26~dfsg+0-0ubuntu0.18.04.15
-libgs9-common9.26~dfsg+0-0ubuntu0.18.04.15
+libgs99.26~dfsg+0-0ubuntu0.18.04.16
+libgs9-common9.26~dfsg+0-0ubuntu0.18.04.16
 libgssapi3-heimdal7.5.0+dfsg-1
 libgssapi-krb5-21.16-2ubuntu0.2
 libharfbuzz0b1.7.2-1ubuntu1
@@ -328,7 +328,7 @@ ncurses-base6.1-1ubuntu1.18.04
 ncurses-bin6.1-1ubuntu1.18.04
 netcat-traditional1.10-41.1
 openbox3.6.1-7ubuntu0.1
-openjdk-11-jre-headless11.0.14.1+1-0ubuntu1~18.04
+openjdk-11-jre-headless11.0.15+10-0ubuntu0.18.04.1
 openssl1.1.1-1ubuntu2.1~18.04.15
 passwd1:4.5-1ubuntu2.2
 perl-base5.26.1-6ubuntu0.5

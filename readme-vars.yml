@@ -1,5 +1,5 @@
 ---
-
+project_deprecation_status: true
 # project information
 project_name: baseimage-guacgui
 full_custom_readme: |
